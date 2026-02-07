@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Computational Complexity</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Computational Complexity
+
+            Understanding how algorithms **scale** with input size.
+
+            - Why some programs are fast
+            - Why others slow to a crawl
+            - How to reason about performance
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # What Is Computational Complexity?
+
+            Computational complexity studies:
+
+            - **Time complexity** → how long an algorithm runs
+            - **Space complexity** → how much memory it uses
+
+            Both are measured as input size grows (**n**).
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Why Complexity Matters
+
+            Small inputs hide problems.
+
+            Large inputs expose them.
+
+            - Code that works for `n = 10`
+            - Might fail for `n = 10⁶`
+
+            Good complexity = scalable software 🚀
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Algorithm Complexity
+
+            Algorithm complexity describes:
+
+            - How execution cost grows with input size
+            - Independent of hardware or programming language
+
+            We focus on **growth rate**, not exact time.
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Big-O Notation
+
+            Big-O describes the **upper bound** of growth.
+
+            Common examples:
+            - **O(1)** – constant
+            - **O(log n)** – logarithmic
+            - **O(n)** – linear
+            - **O(n²)** – quadratic
+
+            ##O(n²) > O(n) > O(log n)##
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Visualizing Big-O
+
+            mermaid
+            graph TD
+              O1["O1 constant"] --> Olog["O log n"]
+              Olog --> On["O n"]
+              On --> Onlog["O n log n"]
+              Onlog --> On2["O n squared"]
+              On2 --> Oexp["O 2 power n"]
+            /mermaid
+
+            Lower is better!
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Time Complexity ⏱️
+
+            Time complexity counts:
+
+            - Number of operations
+            - As input size **n** increases
+
+            Example:
+            - Loop over array → **O(n)**
+            - Nested loops → **O(n²)**
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Space Complexity
+
+            Space complexity measures:
+
+            - Extra memory used by an algorithm
+            - Input memory is often ignored
+
+            Examples:
+            - Single variable → **O(1)**
+            - Extra array of size n → **O(n)**
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Time vs Space Tradeoff ⚖️
+
+            Sometimes you trade:
+
+            - **More memory** for **faster execution**
+            - Or **less memory** for **slower execution**
+
+            Classic example:
+            - Caching results (memoization)
+
+            There is no free lunch.
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Best, Average, Worst Case
+
+            Algorithms can behave differently:
+
+            - **Best case**
+            - **Average case**
+            - **Worst case**
+
+            Big-O usually describes the **worst case**.
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Big-O Chart
+
+            ![Algorithmic Complexity Chart](/images/algorithmic-complexity-chart.png)
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Key Takeaways
+
+            - Computational complexity predicts scalability
+            - Time and space both matter
+            - Big-O compares growth, not exact speed
+            - Choose algorithms that scale well
+
+            Good complexity = happy users!
+
+            </script>
+          </div>
+        </div>
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

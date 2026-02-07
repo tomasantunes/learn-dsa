@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Complexidade Computacional</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Complexidade Computacional
+
+            Compreender como os algoritmos **escalam** com o tamanho da entrada.
+
+            - Porque alguns programas são rápidos
+            - Porque outros ficam extremamente lentos
+            - Como raciocinar sobre desempenho
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # O que é a Complexidade Computacional?
+
+            A complexidade computacional estuda:
+
+            - **Complexidade temporal** ⏱️ → quanto tempo um algoritmo demora
+            - **Complexidade espacial** 💾 → quanta memória utiliza
+
+            Ambas são medidas à medida que o tamanho da entrada (**n**) cresce.
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Porque é que a Complexidade é Importante?
+
+            Entradas pequenas escondem problemas.
+
+            Entradas grandes revelam-nos.
+
+            - Código que funciona para `n = 10`
+            - Pode falhar para `n = 10⁶`
+
+            Boa complexidade = software escalável 🚀
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Complexidade de Algoritmos
+
+            A complexidade de um algoritmo descreve:
+
+            - Como o custo de execução cresce com o tamanho da entrada
+            - Independentemente do hardware ou da linguagem
+
+            Focamo-nos na **taxa de crescimento**, não no tempo exacto.
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Notação Big-O
+
+            A notação Big-O descreve o **limite superior** do crescimento.
+
+            Exemplos comuns:
+            - **O(1)** – constante
+            - **O(log n)** – logarítmica
+            - **O(n)** – linear
+            - **O(n²)** – quadrática
+
+            ##O(n²) > O(n) > O(log n)##
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Visualização do Big-O
+
+            mermaid
+            graph TD
+              O1["O1 constant"] --> Olog["O log n"]
+              Olog --> On["O n"]
+              On --> Onlog["O n log n"]
+              Onlog --> On2["O n squared"]
+              On2 --> Oexp["O 2 power n"]
+            /mermaid
+
+            Quanto mais baixo, melhor!
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Complexidade Temporal
+
+            A complexidade temporal mede:
+
+            - O número de operações executadas
+            - À medida que o tamanho da entrada **n** aumenta
+
+            Exemplo:
+            - Percorrer um array → **O(n)**
+            - Ciclos aninhados → **O(n²)**
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Complexidade Espacial 💾
+
+            A complexidade espacial mede:
+
+            - A memória adicional usada por um algoritmo
+            - A memória da entrada é geralmente ignorada
+
+            Exemplos:
+            - Uma variável → **O(1)**
+            - Um array adicional de tamanho n → **O(n)**
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Compromisso entre Tempo e Espaço
+
+            Por vezes trocamos:
+
+            - **Mais memória** por **menos tempo**
+            - Ou **menos memória** por **mais tempo**
+
+            Exemplo clássico:
+            - Cache de resultados (memoização)
+
+            Não há almoços grátis
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Melhor, Médio e Pior Caso
+
+            Os algoritmos podem comportar-se de forma diferente:
+
+            - **Melhor caso**
+            - **Caso médio**
+            - **Pior caso**
+
+            A notação Big-O descreve normalmente o **pior caso**.
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Gráfico de Big-O
+
+            ![Algorithmic Complexity Chart](/images/algorithmic-complexity-chart.png)
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Ideias-Chave
+
+            - A complexidade computacional prevê escalabilidade
+            - Tempo e espaço são ambos importantes
+            - Big-O compara crescimento, não velocidade exacta
+            - Escolhe algoritmos que escalam bem
+
+            Boa complexidade = utilizadores satisfeitos!
+
+            </script>
+          </div>
+        </div>
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

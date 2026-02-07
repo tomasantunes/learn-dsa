@@ -1,0 +1,19 @@
+{
+  "name": "static",
+  "version": "1.0.0",
+  "description": "Static folder of learn-dsa",
+  "license": "ISC",
+  "author": "Tomás Antunes",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "jquery": "^4.0.0",
+    "katex": "^0.16.28",
+    "marked": "^17.0.1",
+    "mermaid": "^11.12.2"
+  }
+}

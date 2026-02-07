@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Arrays</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+              # Arrays — What Are They?
+
+              An **array** is a data structure that stores **multiple values**  
+              under **one variable name**, in a **fixed order**.
+
+              - Each value is called an **element**
+              - Each position is called an **index**
+              - Indexing usually starts at **0**
+
+              Example:
+              - Array: `[10, 20, 30]`
+              - Indexes: `0, 1, 2`
+              </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Memory Layout
+
+            Arrays store elements in **contiguous memory locations**.
+
+            This means:
+            - Fast access by index
+            - Predictable memory usage
+            - Fixed size (in many languages)
+
+            mermaid
+            graph LR
+              A[Array Start] --> B[0]
+              B --> C[1]
+              C --> D[2]
+              D --> E[3]
+            /mermaid
+            </script> 
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Accessing Elements
+
+            Accessing an element uses its **index**.
+
+            Example:
+            - `arr[0]` → first element
+            - `arr[2]` → third element
+
+            Time complexity:
+            - **Access:** ##O(1)##
+            - Direct jump to memory location
+
+            This is one of the biggest strengths of arrays.
+            </script>
+
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Insertion & Deletion
+
+            Inserting or deleting elements is **expensive**.
+
+            Why?
+            - Elements must be **shifted** to keep order
+
+            mermaid
+            graph LR
+              A[10] --> B[20] --> C[30]
+              C --> D[40]
+            /mermaid
+
+            Time complexity:
+
+            - **Insertion:** ##O(n)##
+            - **Deletion:** ##O(n)##
+            </script>
+          </div> 
+        </div> 
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # When to Use Arrays
+
+            Use arrays when:
+            - You need **fast access**
+            - Data size is **known or stable**
+            - Order matters
+
+            Avoid arrays when:
+            - Frequent insertions/deletions
+            - Size changes often
+
+            Arrays are the foundation for:
+            - Lists
+            - Matrices
+            - Stacks
+            - Many higher-level structures
+            </script>
+
+          </div> 
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Arrays — Exercise 1
+
+            ## Problem
+            You are given an array of integers.
+
+            **Task:**
+            - Compute the **sum**
+            - Compute the **maximum value**
+            - Compute the **average**
+
+            Example array: [4, 7, 1, 9, 3]
+
+            spoiler
+            ```
+            arr = [4, 7, 1, 9, 3]
+
+            total = 0
+            maximum = arr[0]
+
+            for value in arr:
+                total += value
+                if value > maximum:
+                    maximum = value
+
+            average = total / len(arr)
+
+            print("Sum:", total)
+            print("Max:", maximum)
+            print("Average:", average)
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Arrays — Exercise 2
+
+            ## Problem
+            Given an array of integers, create a **new array** where:
+            - Even numbers are **squared**
+            - Odd numbers are **kept unchanged**
+
+            Example:
+
+            Input: [1, 2, 3, 4, 5]
+            Output: [1, 4, 3, 16, 5]
+
+            spoiler
+            ```
+            arr = [1, 2, 3, 4, 5]
+            result = []
+
+            for value in arr:
+                if value % 2 == 0:
+                    result.append(value ** 2)
+                else:
+                    result.append(value)
+
+            print(result)
+            ```
+            /spoiler
+            </script> 
+          </div> 
+        </div> 
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

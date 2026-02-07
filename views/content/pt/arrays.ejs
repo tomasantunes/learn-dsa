@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Arrays</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Arrays — O que são?
+
+            Um **array** é uma estrutura de dados que armazena **vários valores**  
+            sob **um único nome de variável**, numa **ordem fixa**.
+
+            - Cada valor é chamado **elemento**
+            - Cada posição é chamada **índice**
+            - A indexação começa normalmente em **0**
+
+            Exemplo:
+            - Array: `[10, 20, 30]`
+            - Índices: `0, 1, 2`
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Organização na Memória
+
+            Os arrays armazenam os elementos em **posições contíguas de memória**.
+
+            Isto significa:
+            - Acesso rápido por índice ⚡
+            - Uso previsível da memória
+            - Tamanho fixo (em muitas linguagens)
+
+            mermaid
+            graph LR
+              A[Início do Array] --> B[0]
+              B --> C[1]
+              C --> D[2]
+              D --> E[3]
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Acesso aos Elementos
+
+            O acesso a um elemento é feito através do **índice**.
+
+            Exemplo:
+            - `arr[0]` → primeiro elemento
+            - `arr[2]` → terceiro elemento
+
+            Complexidade temporal:
+            - **Acesso:** ##O(1)##
+            - Acesso direto à posição de memória
+
+            Esta é uma das maiores vantagens dos arrays.
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Inserção e Remoção
+
+            Inserir ou remover elementos é **dispendioso**.
+
+            Porquê?
+            - Os elementos têm de ser **deslocados** para manter a ordem
+
+            mermaid
+            graph LR
+              A[10] --> B[20]
+              B --> C[30]
+              C --> D[40]
+            /mermaid
+
+            Complexidade temporal:
+
+            - **Inserção:** ##O(n)##
+            - **Remoção:** ##O(n)##
+            </script>
+          </div> 
+        </div> 
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Quando usar Arrays
+
+            ## Usa arrays quando:
+            - Precisas de **acesso rápido**
+            - O tamanho dos dados é **conhecido ou estável**
+            - A ordem dos elementos é importante
+
+            ## Evita arrays quando:
+            - Há inserções ou remoções frequentes
+            - O tamanho muda constantemente
+
+            ## Os arrays são a base de:
+            - Listas
+            - Matrizes
+            - Pilhas
+            - Muitas outras estruturas de dados
+
+            </script>
+
+          </div> 
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Arrays — Exercício 1
+
+            ## Problema
+            É-te dado um array de números inteiros.
+
+            **Tarefa:**
+            - Calcular a **soma**
+            - Calcular o **valor máximo**
+            - Calcular a **média**
+
+            Array de exemplo: [4, 7, 1, 9, 3]
+
+            spoiler
+            ```
+            arr = [4, 7, 1, 9, 3]
+
+            total = 0
+            maximum = arr[0]
+
+            for value in arr:
+                total += value
+                if value > maximum:
+                    maximum = value
+
+            average = total / len(arr)
+
+            print("Sum:", total)
+            print("Max:", maximum)
+            print("Average:", average)
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Arrays — Exercício 2
+
+            ## Problema
+            Dado um array de números inteiros, cria um **novo array** onde:
+            - Os números **pares** são **elevados ao quadrado**
+            - Os números **ímpares** são **mantidos inalterados**
+
+            Exemplo:
+
+            Entrada: [1, 2, 3, 4, 5]  
+            Saída: [1, 4, 3, 16, 5]
+
+            spoiler
+            ```
+            arr = [1, 2, 3, 4, 5]
+            result = []
+
+            for value in arr:
+                if value % 2 == 0:
+                    result.append(value ** 2)
+                else:
+                    result.append(value)
+
+            print(result)
+            ```
+            /spoiler
+            </script> 
+          </div> 
+        </div> 
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
