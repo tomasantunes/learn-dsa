@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Linked Lists</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Linked Lists — What & Why
+
+            ## What is a Linked List?
+
+            A **linked list** is a linear data structure where:
+            - Elements (**nodes**) are stored **non-contiguously**
+            - Each node contains:
+              - **Data**
+              - A **reference (pointer)** to the next node
+
+            ### Why use linked lists?
+            - Efficient **insertions and deletions**
+            - No need for contiguous memory
+            - Dynamic size
+
+            ### Key trade-off
+            No direct access by index (unlike arrays)
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Linked Lists — Node Structure
+
+            ## Anatomy of a Node
+
+            Each node has two parts:
+            - **Value**
+            - **Next pointer**
+
+            mermaid
+            graph TD;
+              N1["Data | Next"] --> N2["Data | Next"];
+              N2 --> N3["Data | Next"];
+              N3 --> Null["NULL"];
+            /mermaid
+
+            ### Important terms
+            - **Head** → first node
+            - **Tail** → last node
+            - **NULL** → end of the list
+
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Singly Linked Lists
+
+            ## Singly Linked List
+
+            Each node points **only to the next node**
+
+            mermaid
+            graph LR;
+              A --> B --> C --> D --> Null;
+            /mermaid
+
+            ### Characteristics
+            - Traversal in **one direction**
+            - Lower memory usage
+            - Simple implementation
+
+            ### Operations
+            - Insert: O(1) (if position known)
+            - Delete: O(1) (if node known)
+            - Search: O(n)
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Doubly Linked Lists
+
+            ## Doubly Linked List
+
+            Each node points to:
+            - **Next node**
+            - **Previous node**
+
+            mermaid
+            graph LR
+              Null1["NULL"] <--- A <---> B <---> C ---> Null2["NULL"]
+            /mermaid
+
+            ### Advantages
+            - Traverse **forward and backward**
+            - Easier deletion of a given node
+
+            ### Disadvantages
+            - Extra memory for previous pointer
+            - Slightly more complex logic
+
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Circular Linked Lists
+
+            ## Circular Linked Lists
+
+            The last node points back to the **head**
+
+            ### Singly Circular
+            mermaid
+            graph LR;
+              A --> B --> C --> A;
+            /mermaid
+
+            ### Doubly Circular
+            mermaid
+            graph LR;
+              A <--> B <--> C <--> A;
+            /mermaid
+
+            ### Use cases
+            - Round-robin scheduling
+            - Infinite loops / cyclic data
+            - Playlists
+
+            </script>
+
+          </div>
+        </div>
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

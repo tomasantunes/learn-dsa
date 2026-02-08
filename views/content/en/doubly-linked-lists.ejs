@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Doubly Linked Lists</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Doubly Linked Lists
+
+            A **doubly linked list** is a linear data structure where:
+            - Each node stores **data**
+            - A pointer to the **next** node
+            - A pointer to the **previous** node
+
+            Traversal is possible **in both directions**.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Node Structure
+
+            Each node contains three parts:
+            - **Data**
+            - **Prev** → pointer to previous node
+            - **Next** → pointer to next node
+
+            This extra pointer makes navigation more flexible than singly linked lists.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Visual Representation
+
+            mermaid
+            graph LR;
+              NULL1((NULL)) <-->|prev| A[A] <-->|next/prev| B[B] <-->|next/prev| C[C] <-->|next| NULL2((NULL))
+            /mermaid
+
+            - First node's **prev** is NULL  
+            - Last node's **next** is NULL
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Traversal
+
+            You can traverse:
+            - **Forward** using `next`
+            - **Backward** using `prev`
+
+            This is useful for:
+            - Undo/redo operations
+            - Navigation systems
+            - Browsing history
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Insertion at the Beginning
+
+            Steps:
+            1. Create a new node
+            2. Set its `next` to the current head
+            3. Set its `prev` to NULL
+            4. Update old head's `prev`
+            5. Update head pointer
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Insertion at the End
+
+            Steps:
+            1. Create a new node
+            2. Traverse to the last node
+            3. Set last node’s `next` to new node
+            4. Set new node’s `prev` to last node
+            5. Set new node’s `next` to NULL
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Deletion
+
+            To delete a node:
+            - Update the **next** pointer of the previous node
+            - Update the **prev** pointer of the next node
+
+            No shifting of elements is required.
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Time Complexity
+
+            | Operation | Complexity |
+            |---------|------------|
+            | Access | O(n) |
+            | Insert (known node) | O(1) |
+            | Delete (known node) | O(1) |
+            | Search | O(n) |
+
+            Traversal still costs linear time.
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Advantages
+
+            - Bidirectional traversal
+            - Easier deletion than singly linked lists
+            - Useful for complex navigation structures
+
+            Trade-off: extra memory usage.
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Disadvantages
+
+            - Extra memory for `prev` pointer
+            - More pointer updates → higher chance of bugs
+            - Slightly more complex implementation
+
+            Choose wisely based on use case.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercise — Doubly Linked List
+
+            In this exercise, you will **implement a doubly linked list in Python** from scratch.
+
+            A **doubly linked list** is a linear data structure where:
+            - Each node stores **data**
+            - Each node has a reference to the **next node**
+            - Each node has a reference to the **previous node**
+
+            This allows traversal in **both directions**.
+
+            ## Structure Overview
+
+            mermaid
+            graph TD;
+              Null1[None] --> Node1;
+              Node1 --> Node2;
+              Node2 --> Node3;
+              Node3 --> Null2[None];
+
+              Node2 -.-> Node1;
+              Node3 -.-> Node2;
+            /mermaid
+
+            ## Task
+
+            Implement a doubly linked list that supports the following operations:
+
+            1. Create a `Node` class  
+            2. Create a `DoublyLinkedList` class  
+            3. Insert a value at the **end** of the list  
+            4. Display the list **from head to tail**  
+
+            ## Steps to Follow
+
+            1. Define a `Node` class with:
+              - `data`
+              - `next`
+              - `prev`
+            2. Define a `DoublyLinkedList` class with:
+              - a `head` pointer
+            3. Implement an `append(value)` method
+            4. Implement a `print_forward()` method
+            5. Test your implementation
+
+            spoiler
+            ```
+            class Node:
+                def __init__(self, data):
+                    self.data = data
+                    self.next = None
+                    self.prev = None
+
+
+            class DoublyLinkedList:
+                def __init__(self):
+                    self.head = None
+
+                def append(self, value):
+                    new_node = Node(value)
+
+                    if self.head is None:
+                        self.head = new_node
+                        return
+
+                    current = self.head
+                    while current.next:
+                        current = current.next
+
+                    current.next = new_node
+                    new_node.prev = current
+
+                def print_forward(self):
+                    current = self.head
+                    while current:
+                        print(current.data, end=" <-> ")
+                        current = current.next
+                    print("None")
+
+
+            # Example usage
+            lst = DoublyLinkedList()
+            lst.append(10)
+            lst.append(20)
+            lst.append(30)
+
+            lst.print_forward()
+            /spoiler
+            </script>
+          </div>
+        </div>
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

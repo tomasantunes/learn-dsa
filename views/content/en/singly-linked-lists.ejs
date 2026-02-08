@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Singly Linked Lists</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Singly Linked Lists — Overview
+
+            A **singly linked list** is a linear data structure made of **nodes**.
+
+            Each node contains:
+            - **Data**
+            - A **reference (pointer)** to the next node
+
+            Unlike arrays:
+            - Memory is **not contiguous**
+            - Size can **grow or shrink dynamically**
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Node Structure
+
+            Each node has two parts:
+
+            - **Value** (data stored)
+            - **Next** (reference to the next node)
+
+            mermaid
+            graph TD;
+              Node["Node"] --> Data["Data"]
+              Node --> Next["Next pointer"]
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Linked List Layout
+
+            Nodes are connected in sequence.
+
+            mermaid
+            graph LR;
+              A["Data | Next"] --> B["Data | Next"] --> C["Data | Next"] --> Null["null"]
+            /mermaid
+
+            - The last node points to **null**
+            - The first node is called the **head**
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Head of the List
+
+            The **head** is the entry point to the list.
+
+            mermaid
+            graph LR;
+              Head["Head"] --> A["Node 1"] --> B["Node 2"] --> C["Node 3"]
+            /mermaid
+
+            Without the head, the list is **lost**
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Traversing a Linked List
+
+            To access elements:
+            - Start at the **head**
+            - Follow `next` references one by one
+
+            mermaid
+            graph LR;
+              Head --> A --> B --> C --> D
+            /mermaid
+
+            Time complexity: **O(n)**
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Inserting at the Beginning
+
+            Steps:
+            1. Create a new node
+            2. Point it to the current head
+            3. Update head
+
+            mermaid
+            graph LR;
+              New["New Node"] --> OldHead["Old Head"] --> A --> B
+            /mermaid
+
+            Fast operation: **O(1)**
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Inserting at the End
+
+            Steps:
+            1. Traverse to the last node
+            2. Set its `next` to the new node
+
+            mermaid
+            graph LR;
+              A --> B --> C --> New["New Node"]
+            /mermaid
+
+            Time complexity: **O(n)**
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Deleting a Node
+
+            To delete a node:
+            - Update the `next` pointer of the previous node
+
+            mermaid
+            graph LR;
+              A --> B --> C --> D
+              B -. bypass .-> D
+            /mermaid
+
+            No shifting required  
+            Must manage pointers carefully
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Advantages & Disadvantages
+
+            ## Advantages
+            - Dynamic size
+            - Efficient insertions/deletions
+            - No memory reallocation
+
+            ## Disadvantages
+            - No random access
+            - Extra memory for pointers
+            - Slower traversal
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # When to Use Singly Linked Lists
+
+            Use them when:
+            - You need frequent insertions/deletions
+            - Size is unknown or changing
+            - Sequential access is enough
+
+            Avoid them when:
+            - You need fast indexing
+            - Cache performance matters
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercise — Singly Linked List
+
+            In this exercise, you will **implement a singly linked list in Python** from scratch.
+
+            A **singly linked list** is a linear data structure where:
+            - Each element (node) stores **data**
+            - Each node points to the **next node** in the list
+
+            ## Structure Overview
+
+            mermaid
+            graph TD;
+              Head --> Node1;
+              Node1 --> Node2;
+              Node2 --> Node3;
+              Node3 --> Null;
+            /mermaid
+
+            ## Task
+
+            Implement a singly linked list that supports the following operations:
+
+            1. Create a `Node` class  
+            2. Create a `SinglyLinkedList` class  
+            3. Insert a value at the **end** of the list  
+            4. Display all elements in the list  
+
+            ## Steps to Follow
+
+            1. Define a `Node` class with:
+              - `data`
+              - `next`
+            2. Define a `SinglyLinkedList` class with:
+              - a `head` pointer
+            3. Implement an `append(value)` method
+            4. Implement a `print_list()` method
+            5. Test your implementation
+
+            spoiler
+            ```
+            class Node:
+                def __init__(self, data):
+                    self.data = data
+                    self.next = None
+
+
+            class SinglyLinkedList:
+                def __init__(self):
+                    self.head = None
+
+                def append(self, value):
+                    new_node = Node(value)
+
+                    if self.head is None:
+                        self.head = new_node
+                        return
+
+                    current = self.head
+                    while current.next:
+                        current = current.next
+
+                    current.next = new_node
+
+                def print_list(self):
+                    current = self.head
+                    while current:
+                        print(current.data, end=" -> ")
+                        current = current.next
+                    print("None")
+
+
+            # Example usage
+            lst = SinglyLinkedList()
+            lst.append(10)
+            lst.append(20)
+            lst.append(30)
+
+            lst.print_list()
+            /spoiler
+            </script>
+          </div>
+        </div>
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
