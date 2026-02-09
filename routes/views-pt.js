@@ -25,4 +25,8 @@ router.get('/pt/circular-linked-lists', function(req, res, next) {
   res.render('content/pt/circular-linked-lists');
 });
 
+router.get('/pt/stack', function(req, res, next) {
+  res.render('content/pt/stack');
+});
+
 module.exports = router;

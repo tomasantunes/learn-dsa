@@ -8,7 +8,7 @@
   <body>
 
     <div class="d-flex">
-      <%- include('../../partials/sidebar') %>
+      <%- include('../../partials/sidebar-pt') %>
 
       <main class="flex-fill p-4">
         <div class="text-center">
@@ -18,22 +18,23 @@
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Stack — What Is It?
+            # Stack — O Que É?
 
-            A **stack** is a **linear data structure** that follows the principle:
+            Uma **stack** é uma **estrutura de dados linear** que segue o princípio:
 
             **LIFO**
 
-            **Last In, First Out**
+            **Last In, First Out**  
+            (**Último a Entrar, Primeiro a Sair**)
 
-            The last element added to the stack  
-            is the **first one removed**.
+            O último elemento adicionado à stack  
+            é o **primeiro a ser removido**.
 
             mermaid
             graph TD;
-              A["Bottom"] --> B;
+              A["Base"] --> B;
               B --> C;
-              C --> D["Top"];
+              C --> D["Topo"];
             /mermaid
             </script>
           </div>
@@ -42,15 +43,15 @@
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Stack — Real-World Analogy
+            # Stack — Analogia do Mundo Real
 
-            Think of a **stack of plates** 🍽️
+            Pensa numa **pilha de pratos** 🍽️
 
-            - You **add** plates on top
-            - You **remove** plates from the top
-            - You cannot access plates in the middle
+            - Adicionas pratos **no topo**
+            - Retiras pratos **do topo**
+            - Não consegues aceder aos pratos do meio
 
-            This is exactly how a stack behaves.
+            É exactamente assim que uma stack funciona.
 
             mermaid
             graph TD;
@@ -65,18 +66,18 @@
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Stack — Core Operations
+            # Stack — Operações Fundamentais
 
-            A stack usually supports these operations:
+            Uma stack suporta normalmente as seguintes operações:
 
-            - **push** → add an element
-            - **pop** → remove the top element
-            - **peek / top** → view the top element
-            - **isEmpty** → check if stack is empty
+            - **push** → adicionar um elemento
+            - **pop** → remover o elemento do topo
+            - **peek / top** → ver o elemento do topo
+            - **isEmpty** → verificar se a stack está vazia
 
             ####O(1)####
 
-            All main operations are **constant time**.
+            Todas as operações principais têm **tempo constante**.
 
             mermaid
             graph TD;
@@ -91,64 +92,61 @@
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Stack — Push Operation
+            # Stack — Operação Push
 
-            **Push** adds an element to the **top** of the stack.
+            **Push** adiciona um elemento ao **topo** da stack.
 
-            Steps:
-            1. Move the top pointer
-            2. Insert the new element
+            Passos:
+            1. Mover o ponteiro do topo
+            2. Inserir o novo elemento
 
             mermaid
             graph TD;
               A --> B;
               B --> C;
-              C --> D["New Top"];
+              C --> D["Novo Topo"];
             /mermaid
             </script>
-
           </div>
         </div>
 
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Stack — Pop Operation
+            # Stack — Operação Pop
 
-            **Pop** removes the **top element**.
+            **Pop** remove o **elemento do topo**.
 
-            Rules:
-            - Only the top can be removed
-            - Stack size decreases
+            Regras:
+            - Apenas o topo pode ser removido
+            - O tamanho da stack diminui
 
             mermaid
             graph TD;
               A --> B;
-              B --> C["Removed"];
+              B --> C["Removido"];
             /mermaid
             </script>
-
           </div>
         </div>
 
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Stack — Peek Operation
+            # Stack — Operação Peek
 
-            **Peek** returns the top element **without removing it**.
+            **Peek** devolve o elemento do topo **sem o remover**.
 
-            Useful when you need to:
-            - Inspect the stack
-            - Preserve its contents
+            Útil quando precisas de:
+            - Inspeccionar a stack
+            - Preservar o seu conteúdo
 
             mermaid
             graph TD;
               A --> B;
-              B --> C["Top"];
+              B --> C["Topo"];
             /mermaid
             </script>
-
           </div>
         </div>
 
@@ -157,14 +155,14 @@
             <script type="text/markdown">
             # Stack — Overflow & Underflow
 
-            Two common error conditions:
+            Duas condições de erro comuns:
 
-            - **Overflow** → pushing onto a full stack
-            - **Underflow** → popping from an empty stack
+            - **Overflow** → fazer push numa stack cheia
+            - **Underflow** → fazer pop numa stack vazia
 
             ####n ≥ 0####
 
-            Stack size must always be valid.
+            O tamanho da stack deve ser sempre válido.
 
             mermaid
             graph TD;
@@ -172,25 +170,24 @@
               Full --> Overflow;
             /mermaid
             </script>
-
           </div>
         </div>
 
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Stack — Implementations
+            # Stack — Implementações
 
-            Stacks can be implemented using:
+            As stacks podem ser implementadas usando:
 
             - **Arrays**
-            - **Linked Lists**
+            - **Listas Ligadas**
 
-            Array stack:
-            - Fixed or dynamic size
+            Stack com array:
+            - Tamanho fixo ou dinâmico
 
-            Linked list stack:
-            - Grows dynamically
+            Stack com lista ligada:
+            - Cresce dinamicamente
 
             mermaid
             graph TD;
@@ -198,22 +195,21 @@
               Stack --> LinkedList;
             /mermaid
             </script>
-
           </div>
         </div>
 
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Stack — Applications
+            # Stack — Aplicações
 
-            Stacks are widely used in:
+            As stacks são amplamente utilizadas em:
 
-            - Function calls (call stack)
-            - Undo / Redo systems
-            - Expression evaluation
-            - Syntax parsing
-            - Backtracking algorithms
+            - Chamadas de funções (call stack)
+            - Sistemas de Undo / Redo
+            - Avaliação de expressões
+            - Análise sintáctica
+            - Algoritmos de backtracking
 
             mermaid
             graph TD;
@@ -222,23 +218,22 @@
               Stack --> Parsing;
             /mermaid
             </script>
-
           </div>
         </div>
 
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Stack — Key Takeaways
+            # Stack — Pontos-Chave
 
-            - Stack follows **LIFO**
-            - Access is limited to the **top**
-            - Push, Pop, Peek are **O(1)**
-            - Simple but extremely powerful
+            - A stack segue **LIFO**
+            - O acesso é limitado ao **topo**
+            - Push, Pop e Peek são **O(1)**
+            - Simples, mas extremamente poderosa
 
-            ####Simple ≠ Weak####
+            ####Simples ≠ Fraca####
 
-            Stacks are fundamental in computer science.
+            As stacks são fundamentais em ciência da computação.
 
             mermaid
             graph TD;
@@ -253,73 +248,72 @@
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Exercise — Implementing a Stack
+            # Exercício — Implementar uma Stack
 
-            In this exercise, you will implement a **Stack data structure** from scratch.
+            Neste exercício, vais implementar uma **estrutura de dados Stack** de raiz.
 
-            Remember, a stack follows the rule:
+            Lembra-te: uma stack segue a regra:
 
             # LIFO #
 
             **Last In, First Out**
 
-            You will create a stack that supports the most common operations.
+            Vais criar uma stack que suporta as operações mais comuns.
 
             mermaid
             graph TD;
-              A["Bottom"] --> B;
+              A["Base"] --> B;
               B --> C;
-              C --> D["Top"];
+              C --> D["Topo"];
             /mermaid
 
             ---
 
-            ## Task
+            ## Tarefa
 
-            Implement a stack with the following operations:
+            Implementa uma stack com as seguintes operações:
 
-            - **push(value)** → adds an element to the stack
-            - **pop()** → removes and returns the top element
-            - **peek()** → returns the top element without removing it
-            - **is_empty()** → checks if the stack is empty
-
-            ---
-
-            ## Steps to Follow
-
-            1. Choose a data structure to store the elements  
-              (hint: a Python list works well)
-
-            2. Keep track of the **top of the stack**
-
-            3. Implement the **push** operation  
-              - Add an element to the top
-
-            4. Implement the **pop** operation  
-              - Remove and return the top element  
-              - Handle the case where the stack is empty
-
-            5. Implement the **peek** operation  
-              - Return the top element without removing it
-
-            6. Implement **is_empty**  
-              - Return `True` if the stack has no elements
+            - **push(value)** → adiciona um elemento à stack
+            - **pop()** → remove e devolve o elemento do topo
+            - **peek()** → devolve o elemento do topo sem o remover
+            - **is_empty()** → verifica se a stack está vazia
 
             ---
 
-            ## Constraints
+            ## Passos a Seguir
 
-            - All operations should run in **O(1)** time
-            - Do not use Python’s built-in stack libraries
+            1. Escolhe uma estrutura de dados para armazenar os elementos  
+              (dica: uma lista em Python funciona bem)
+
+            2. Mantém o controlo do **topo da stack**
+
+            3. Implementa a operação **push**  
+              - Adiciona um elemento ao topo
+
+            4. Implementa a operação **pop**  
+              - Remove e devolve o elemento do topo  
+              - Trata o caso em que a stack está vazia
+
+            5. Implementa a operação **peek**  
+              - Devolve o elemento do topo sem o remover
+
+            6. Implementa **is_empty**  
+              - Devolve `True` se a stack não tiver elementos
+
+            ---
+
+            ## Restrições
+
+            - Todas as operações devem correr em **O(1)**
+            - Não uses bibliotecas de stack já existentes em Python
 
             ####n ≥ 0####
 
-            The stack size must never be negative.
+            O tamanho da stack nunca deve ser negativo.
 
             ---
 
             spoiler
-
             ```
             class Stack:
                 def __init__(self):
@@ -333,35 +327,36 @@
 
                 def pop(self):
                     if self.is_empty():
-                        raise IndexError("Pop from empty stack")
+                        raise IndexError("Pop de uma stack vazia")
                     return self.items.pop()
 
                 def peek(self):
                     if self.is_empty():
-                        raise IndexError("Peek from empty stack")
+                        raise IndexError("Peek de uma stack vazia")
                     return self.items[-1]
 
 
-            # Example usage
+            # Exemplo de utilização
             stack = Stack()
             stack.push(10)
             stack.push(20)
             stack.push(30)
 
-            print(stack.peek())   # 30
-            print(stack.pop())    # 30
-            print(stack.pop())    # 20
+            print(stack.peek())      # 30
+            print(stack.pop())       # 30
+            print(stack.pop())       # 20
             print(stack.is_empty())  # False
             ```
             /spoiler
             </script>
           </div>
         </div>
+
         
         <!-- CONTROLS --> 
         <div class="nav-controls"> 
-          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
-          <button class="btn btn-outline-dark" id="next">Next →</button> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
         </div> 
         <div class="progress-container"> 
           <div class="progress-bar" id="progress"></div> 
