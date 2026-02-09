@@ -2,8 +2,7 @@
 var spoiler_title = "";
 if (window.location.pathname.includes('/pt/')) {
   spoiler_title = "Solução";
-}
-else {
+} else {
   spoiler_title = "Solution";
 }
 
@@ -31,7 +30,6 @@ document.addEventListener('click', e => {
   const isOpen = block.classList.contains('open');
 
   e.target.textContent = spoiler_title;
-
   e.target.setAttribute('aria-expanded', String(isOpen));
 });
 
@@ -59,8 +57,19 @@ $(function () {
       (_, code) => {
         const id = 'mermaid-' + crypto.randomUUID();
         mermaidBlocks.push({ id, code });
-        console.log(code);
         return `<!--MERMAID:${id}-->`;
+      }
+    );
+
+    /* ---------- Extract KATEX (## ... ##) ---------- */
+
+    const katexBlocks = [];
+    md = md.replace(
+      /####([\s\S]*?)####/g,
+      (_, expr) => {
+        const id = 'katex-' + crypto.randomUUID();
+        katexBlocks.push({ id, expr: expr.trim() });
+        return `<!--KATEX:${id}-->`;
       }
     );
 
@@ -83,7 +92,7 @@ $(function () {
       /spoiler([\s\S]*?)\/spoiler/g,
       (_, code) => {
         const id = 'spoiler-' + crypto.randomUUID();
-        spoilerBlocks.push({ id, code: code });
+        spoilerBlocks.push({ id, code });
         return `<!--SPOILER:${id}-->`;
       }
     );
@@ -95,7 +104,6 @@ $(function () {
     /* ---------- Restore MERMAID ---------- */
 
     mermaidBlocks.forEach(b => {
-      console.log(b.code);
       html = html.replace(
         `<!--MERMAID:${b.id}-->`,
         `<div class="mermaid" id="${b.id}">${b.code}</div>`
@@ -121,7 +129,27 @@ $(function () {
       );
     });
 
+    /* ---------- Restore KATEX ---------- */
+
+    katexBlocks.forEach(b => {
+      let rendered;
+      try {
+        rendered = katex.renderToString(b.expr, {
+          displayMode: true,
+          throwOnError: false
+        });
+      } catch (e) {
+        rendered = `<pre class="katex-error">${b.expr}</pre>`;
+      }
+
+      html = html.replace(
+        `<!--KATEX:${b.id}-->`,
+        `<div class="katex-block">${rendered}</div>`
+      );
+    });
+
     /* ---------- Restore CODE ---------- */
+
     codeBlocks.forEach(b => {
       const escaped = b.code
         .replace(/&/g, '&amp;')
