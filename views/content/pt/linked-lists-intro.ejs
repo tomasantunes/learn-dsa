@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Listas Ligadas</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Listas Ligadas — O quê & Porquê
+
+            ## O que é uma Lista Ligada?
+
+            Uma **lista ligada** é uma estrutura de dados linear onde:
+            - Os elementos (**nós**) são armazenados de forma **não contígua**
+            - Cada nó contém:
+              - **Dados**
+              - Uma **referência (ponteiro)** para o nó seguinte
+
+            ### Porquê usar listas ligadas?
+            - **Inserções e remoções** eficientes
+            - Não é necessária memória contígua
+            - Tamanho dinâmico
+
+            ### Principal desvantagem
+            Não existe acesso directo por índice (ao contrário dos arrays)
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Listas Ligadas — Estrutura do Nó
+
+            ## Anatomia de um Nó
+
+            Cada nó tem duas partes:
+            - **Valor**
+            - **Ponteiro para o próximo**
+
+            mermaid
+            graph TD;
+              N1["Dados | Próximo"] --> N2["Dados | Próximo"];
+              N2 --> N3["Dados | Próximo"];
+              N3 --> Null["NULL"];
+            /mermaid
+
+            ### Termos importantes
+            - **Head** → primeiro nó
+            - **Tail** → último nó
+            - **NULL** → fim da lista
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Listas Ligadas Simples
+
+            ## Lista Ligada Simples
+
+            Cada nó aponta **apenas para o nó seguinte**
+
+            mermaid
+            graph LR;
+              A --> B --> C --> D --> Null;
+            /mermaid
+
+            ### Características
+            - Percurso num **único sentido**
+            - Menor utilização de memória
+            - Implementação simples
+
+            ### Operações
+            - Inserir: O(1) (se a posição for conhecida)
+            - Remover: O(1) (se o nó for conhecido)
+            - Procurar: O(n)
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Listas Ligadas Duplas
+
+            ## Lista Ligada Dupla
+
+            Cada nó aponta para:
+            - **Nó seguinte**
+            - **Nó anterior**
+
+            mermaid
+            graph LR
+              Null1["NULL"] <--- A <---> B <---> C ---> Null2["NULL"]
+            /mermaid
+
+            ### Vantagens
+            - Percorrer a lista **para a frente e para trás**
+            - Remoção mais fácil de um nó específico
+
+            ### Desvantagens
+            - Memória extra para o ponteiro anterior
+            - Lógica ligeiramente mais complexa
+
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Listas Ligadas Circulares
+
+            ## Listas Ligadas Circulares
+
+            O último nó aponta novamente para o **head**
+
+            ### Circular Simples
+            mermaid
+            graph LR;
+              A --> B --> C --> A;
+            /mermaid
+
+            ### Circular Dupla
+            mermaid
+            graph LR;
+              A <--> B <--> C <--> A;
+            /mermaid
+
+            ### Casos de uso
+            - Escalonamento round-robin
+            - Ciclos infinitos / dados cíclicos
+            - Playlists
+
+            </script>
+          </div>
+        </div>
+
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

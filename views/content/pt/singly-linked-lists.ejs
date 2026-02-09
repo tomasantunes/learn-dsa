@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Listas Ligadas Simples</h3>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Listas Ligadas Simples — Visão Geral
+
+            Uma **lista ligada simples** é uma estrutura de dados linear composta por **nós**.
+
+            Cada nó contém:
+            - **Dados**
+            - Uma **referência (ponteiro)** para o nó seguinte
+
+            Ao contrário dos arrays:
+            - A memória **não é contígua**
+            - O tamanho pode **crescer ou diminuir dinamicamente**
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Estrutura de um Nó
+
+            Cada nó tem duas partes:
+
+            - **Valor** (dados armazenados)
+            - **Next** (referência para o nó seguinte)
+
+            mermaid
+            graph TD;
+              Node["Nó"] --> Data["Dados"]
+              Node --> Next["Ponteiro Next"]
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Disposição da Lista Ligada
+
+            Os nós estão ligados em sequência.
+
+            mermaid
+            graph LR;
+              A["Dados | Next"] --> B["Dados | Next"] --> C["Dados | Next"] --> Null["null"]
+            /mermaid
+
+            - O último nó aponta para **null**
+            - O primeiro nó chama-se **head**
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Head da Lista
+
+            O **head** é o ponto de entrada da lista.
+
+            mermaid
+            graph LR;
+              Head["Head"] --> A["Nó 1"] --> B["Nó 2"] --> C["Nó 3"]
+            /mermaid
+
+            Sem o head, a lista fica **perdida**
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Percorrer uma Lista Ligada
+
+            Para aceder aos elementos:
+            - Começa no **head**
+            - Segue as referências `next`, uma a uma
+
+            mermaid
+            graph LR;
+              Head --> A --> B --> C --> D
+            /mermaid
+
+            Complexidade temporal: **O(n)**
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Inserção no Início
+
+            Passos:
+            1. Criar um novo nó
+            2. Apontá-lo para o head actual
+            3. Actualizar o head
+
+            mermaid
+            graph LR;
+              New["Novo Nó"] --> OldHead["Head Antigo"] --> A --> B
+            /mermaid
+
+            Operação rápida: **O(1)**
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Inserção no Fim
+
+            Passos:
+            1. Percorrer até ao último nó
+            2. Definir o `next` desse nó como o novo nó
+
+            mermaid
+            graph LR;
+              A --> B --> C --> New["Novo Nó"]
+            /mermaid
+
+            Complexidade temporal: **O(n)**
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Remoção de um Nó
+
+            Para remover um nó:
+            - Actualiza-se o ponteiro `next` do nó anterior
+
+            mermaid
+            graph LR;
+              A --> B --> C --> D
+              B -. ignora .-> D
+            /mermaid
+
+            Não é necessário deslocar elementos  
+            É preciso gerir os ponteiros com cuidado
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Vantagens & Desvantagens
+
+            ## Vantagens
+            - Tamanho dinâmico
+            - Inserções e remoções eficientes
+            - Não requer realocação de memória
+
+            ## Desvantagens
+            - Não permite acesso aleatório
+            - Memória extra para ponteiros
+            - Percurso mais lento
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Quando Usar Listas Ligadas Simples
+
+            Usa-as quando:
+            - Precisas de inserções/remoções frequentes
+            - O tamanho é desconhecido ou variável
+            - O acesso sequencial é suficiente
+
+            Evita-as quando:
+            - Precisas de indexação rápida
+            - O desempenho de cache é importante
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercício — Lista Ligada Simples
+
+            Neste exercício, vais **implementar uma lista ligada simples em Python** de raiz.
+
+            Uma **lista ligada simples** é uma estrutura de dados linear onde:
+            - Cada elemento (nó) armazena **dados**
+            - Cada nó aponta para o **nó seguinte** da lista
+
+            ## Visão Geral da Estrutura
+
+            mermaid
+            graph TD;
+              Head --> Node1;
+              Node1 --> Node2;
+              Node2 --> Node3;
+              Node3 --> Null;
+            /mermaid
+
+            ## Tarefa
+
+            Implementa uma lista ligada simples que suporte as seguintes operações:
+
+            1. Criar uma classe `Node`  
+            2. Criar uma classe `SinglyLinkedList`  
+            3. Inserir um valor no **fim** da lista  
+            4. Mostrar todos os elementos da lista  
+
+            ## Passos a Seguir
+
+            1. Definir a classe `Node` com:
+              - `data`
+              - `next`
+            2. Definir a classe `SinglyLinkedList` com:
+              - um ponteiro `head`
+            3. Implementar o método `append(value)`
+            4. Implementar o método `print_list()`
+            5. Testar a implementação
+
+            spoiler
+            ```
+            class Node:
+                def __init__(self, data):
+                    self.data = data
+                    self.next = None
+
+
+            class SinglyLinkedList:
+                def __init__(self):
+                    self.head = None
+
+                def append(self, value):
+                    new_node = Node(value)
+
+                    if self.head is None:
+                        self.head = new_node
+                        return
+
+                    current = self.head
+                    while current.next:
+                        current = current.next
+
+                    current.next = new_node
+
+                def print_list(self):
+                    current = self.head
+                    while current:
+                        print(current.data, end=" -> ")
+                        current = current.next
+                    print("None")
+
+
+            # Exemplo de utilização
+            lst = SinglyLinkedList()
+            lst.append(10)
+            lst.append(20)
+            lst.append(30)
+
+            lst.print_list()
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

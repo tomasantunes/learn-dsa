@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Listas Ligadas Circulares</h3>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Listas Ligadas Circulares
+
+            Uma **lista ligada circular** é uma lista ligada  
+            onde o **último nó aponta de volta para o primeiro**.
+
+            **Não existe NULL** no final.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Porque "Circular"? 🤔
+
+            Numa lista ligada circular:
+            - Todos os nós têm um sucessor
+            - O percurso pode repetir-se indefinidamente
+            - A lista forma um **ciclo**
+
+            É útil quando os dados precisam de se repetir continuamente.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Estrutura Básica
+
+            Cada nó contém:
+            - **Dados**
+            - **Ponteiro para o próximo nó**
+
+            O ponteiro `next` do último nó aponta para a cabeça.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Representação Visual
+
+            mermaid
+            graph TD;
+              A[Node 1] --> B[Node 2]
+              B --> C[Node 3]
+              C --> A
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Ponteiro Head
+
+            O **head**:
+            - Aponta para o primeiro nó
+            - Permite aceder a toda a lista
+            - Consegue alcançar todos os nós através do percurso
+
+            Nenhum nó aponta para NULL.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Percurso (Traversal)
+
+            Regras do percurso:
+            - Começar no head
+            - Parar quando se chega novamente ao head
+            - Caso contrário → ciclo infinito
+
+            É sempre necessário verificar ciclos.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Inserção
+
+            Inserções comuns:
+            - No início
+            - No fim
+            - Após um nó específico
+
+            É necessário cuidado extra para manter a ligação circular.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Remoção
+
+            Ao remover:
+            - Atualizar o ponteiro do nó anterior
+            - Se for removido o head, avançar o head
+            - Garantir que o último nó continua a apontar para o head
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Vantagens
+
+            - Sem ponteiros NULL
+            - Eficiente para processos cíclicos
+            - Rotação de elementos simples
+            - Útil em sistemas baseados em rondas
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Casos de Utilização Comuns
+
+            As listas ligadas circulares são utilizadas em:
+            - Escalonamento round-robin
+            - Jogos multijogador
+            - Listas de reprodução multimédia
+            - Sistemas de relógio e buffers
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercício — Lista Ligada Circular
+
+            Neste exercício, vais **implementar uma lista ligada circular em Python** de raiz.
+
+            Uma **lista ligada circular** é uma estrutura de dados linear onde:
+            - Cada nó armazena **dados**
+            - Cada nó aponta para o **nó seguinte**
+            - O **último nó aponta de volta para o primeiro nó**
+
+            **Não existe `None` no final** da lista.
+
+            ## Visão Geral da Estrutura
+
+            mermaid
+            graph TD;
+              Head --> Node1;
+              Node1 --> Node2;
+              Node2 --> Node3;
+              Node3 --> Node1;
+            /mermaid
+
+            ## Tarefa
+
+            Implementa uma lista ligada circular que suporte as seguintes operações:
+
+            1. Criar uma classe `Node`  
+            2. Criar uma classe `CircularLinkedList`  
+            3. Inserir um valor no **fim** da lista  
+            4. Mostrar todos os elementos da lista  
+
+            ## Passos a Seguir
+
+            1. Definir uma classe `Node` com:
+              - `data`
+              - `next`
+            2. Definir uma classe `CircularLinkedList` com:
+              - um ponteiro `head`
+            3. Implementar um método `append(value)`
+            4. Garantir que o **último nó aponta de volta para o head**
+            5. Implementar um método `print_list()`
+            6. Testar a implementação
+
+            spoiler
+            ```
+            class Node:
+                def __init__(self, data):
+                    self.data = data
+                    self.next = None
+
+
+            class CircularLinkedList:
+                def __init__(self):
+                    self.head = None
+
+                def append(self, value):
+                    new_node = Node(value)
+
+                    # Se a lista estiver vazia
+                    if self.head is None:
+                        self.head = new_node
+                        new_node.next = self.head
+                        return
+
+                    # Percorrer até ao último nó
+                    current = self.head
+                    while current.next != self.head:
+                        current = current.next
+
+                    current.next = new_node
+                    new_node.next = self.head
+
+                def print_list(self):
+                    if self.head is None:
+                        print("A lista está vazia")
+                        return
+
+                    current = self.head
+                    while True:
+                        print(current.data, end=" -> ")
+                        current = current.next
+                        if current == self.head:
+                            break
+                    print("(de volta ao head)")
+
+
+            # Exemplo de utilização
+            lst = CircularLinkedList()
+            lst.append(10)
+            lst.append(20)
+            lst.append(30)
+
+            lst.print_list()
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

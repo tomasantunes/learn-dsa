@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Listas Duplamente Ligadas</h3>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Listas Duplamente Ligadas
+
+            Uma **lista duplamente ligada** é uma estrutura de dados linear onde:
+            - Cada nó armazena **dados**
+            - Um ponteiro para o nó **seguinte**
+            - Um ponteiro para o nó **anterior**
+
+            A travessia é possível **em ambas as direcções**.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Estrutura do Nó
+
+            Cada nó contém três partes:
+            - **Dados**
+            - **Prev** → ponteiro para o nó anterior
+            - **Next** → ponteiro para o nó seguinte
+
+            Este ponteiro extra torna a navegação mais flexível do que nas listas simplesmente ligadas.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Representação Visual
+
+            mermaid
+            graph LR;
+              NULL1((NULL)) <-->|prev| A[A] <-->|next/prev| B[B] <-->|next/prev| C[C] <-->|next| NULL2((NULL))
+            /mermaid
+
+            - O **prev** do primeiro nó é NULL  
+            - O **next** do último nó é NULL
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Travessia
+
+            É possível percorrer a lista:
+            - **Para a frente** usando `next`
+            - **Para trás** usando `prev`
+
+            Isto é útil para:
+            - Operações de desfazer/refazer
+            - Sistemas de navegação
+            - Histórico de navegação
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Inserção no Início
+
+            Passos:
+            1. Criar um novo nó
+            2. Definir o seu `next` como o head actual
+            3. Definir o seu `prev` como NULL
+            4. Actualizar o `prev` do antigo head
+            5. Actualizar o ponteiro head
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Inserção no Fim
+
+            Passos:
+            1. Criar um novo nó
+            2. Percorrer até ao último nó
+            3. Definir o `next` do último nó para o novo nó
+            4. Definir o `prev` do novo nó para o último nó
+            5. Definir o `next` do novo nó como NULL
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Remoção
+
+            Para remover um nó:
+            - Actualizar o ponteiro **next** do nó anterior
+            - Actualizar o ponteiro **prev** do nó seguinte
+
+            Não é necessário deslocar elementos.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Complexidade Temporal
+
+            | Operação | Complexidade |
+            |---------|-------------|
+            | Acesso | O(n) |
+            | Inserção (nó conhecido) | O(1) |
+            | Remoção (nó conhecido) | O(1) |
+            | Pesquisa | O(n) |
+
+            A travessia continua a ter custo linear.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Vantagens
+
+            - Travessia bidireccional
+            - Remoção mais simples do que em listas simplesmente ligadas
+            - Útil para estruturas de navegação complexas
+
+            Compromisso: maior utilização de memória.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Desvantagens
+
+            - Memória extra para o ponteiro `prev`
+            - Mais actualizações de ponteiros → maior probabilidade de erros
+            - Implementação ligeiramente mais complexa
+
+            Escolhe de forma consciente consoante o caso de uso.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercício — Lista Duplamente Ligada
+
+            Neste exercício, vais **implementar uma lista duplamente ligada em Python** a partir do zero.
+
+            Uma **lista duplamente ligada** é uma estrutura de dados linear onde:
+            - Cada nó armazena **dados**
+            - Cada nó tem uma referência para o **nó seguinte**
+            - Cada nó tem uma referência para o **nó anterior**
+
+            Isto permite a travessia em **ambas as direcções**.
+
+            ## Visão Geral da Estrutura
+
+            mermaid
+            graph TD;
+              Null1[None] --> Node1;
+              Node1 --> Node2;
+              Node2 --> Node3;
+              Node3 --> Null2[None];
+
+              Node2 -.-> Node1;
+              Node3 -.-> Node2;
+            /mermaid
+
+            ## Tarefa
+
+            Implementa uma lista duplamente ligada que suporte as seguintes operações:
+
+            1. Criar uma classe `Node`  
+            2. Criar uma classe `DoublyLinkedList`  
+            3. Inserir um valor no **fim** da lista  
+            4. Mostrar a lista **do início ao fim**  
+
+            ## Passos a Seguir
+
+            1. Definir uma classe `Node` com:
+              - `data`
+              - `next`
+              - `prev`
+            2. Definir uma classe `DoublyLinkedList` com:
+              - um ponteiro `head`
+            3. Implementar o método `append(value)`
+            4. Implementar o método `print_forward()`
+            5. Testar a implementação
+
+            spoiler
+            ```
+            class Node:
+                def __init__(self, data):
+                    self.data = data
+                    self.next = None
+                    self.prev = None
+
+
+            class DoublyLinkedList:
+                def __init__(self):
+                    self.head = None
+
+                def append(self, value):
+                    new_node = Node(value)
+
+                    if self.head is None:
+                        self.head = new_node
+                        return
+
+                    current = self.head
+                    while current.next:
+                        current = current.next
+
+                    current.next = new_node
+                    new_node.prev = current
+
+                def print_forward(self):
+                    current = self.head
+                    while current:
+                        print(current.data, end=" <-> ")
+                        current = current.next
+                    print("None")
+
+
+            # Exemplo de utilização
+            lst = DoublyLinkedList()
+            lst.append(10)
+            lst.append(20)
+            lst.append(30)
+
+            lst.print_forward()
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
