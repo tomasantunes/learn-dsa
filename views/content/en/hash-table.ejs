@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Hash Table</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Hash Tables — What Are They?
+
+            A **hash table** is a **data structure** that stores  
+            **key–value pairs**.
+
+            It allows **very fast access** to data  
+            by using a **hash function**.
+
+            Average time complexity:
+            - **Insert:** O(1)
+            - **Search:** O(1)
+            - **Delete:** O(1)
+
+            mermaid
+            graph TD;
+              Key --> HashFunction;
+              HashFunction --> Index;
+              Index --> Value;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Key–Value Pairs
+
+            Each element in a hash table has:
+            - a **key** (identifier)
+            - a **value** (data)
+
+            Example:
+            - Key: `"name"`
+            - Value: `"Alice"`
+
+            The key is used to **find** the value.
+
+            mermaid
+            graph LR;
+              Key["Key: 'name'"] --> Value["Value: 'Alice'"];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Hash Function
+
+            A **hash function**:
+            - Takes a **key**
+            - Produces an **integer index**
+
+            That index determines  
+            where the value is stored in memory.
+
+            ####h(key) → index####
+
+            mermaid
+            graph TD;
+              Key --> HashFunction;
+              HashFunction --> Index;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Table Structure
+
+            Internally, a hash table is usually:
+            - An **array**
+            - Indexed using the hash function result
+
+            Each position is called a **bucket**.
+
+            mermaid
+            graph LR;
+              A["Index 0"] --> B["Index 1"] --> C["Index 2"] --> D["Index 3"];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Collisions
+
+            A **collision** happens when:
+            - Two different keys
+            - Produce the **same index**
+
+            This is unavoidable in practice.
+
+            ####h(key₁) = h(key₂)####
+
+            mermaid
+            graph TD;
+              Key1 --> Index;
+              Key2 --> Index;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Collision Resolution — Chaining
+
+            **Chaining** stores multiple values  
+            in the same bucket using a list.
+
+            Each bucket contains:
+            - A linked list (or similar structure)
+
+            mermaid
+            graph TD;
+              Index --> Node1 --> Node2 --> Node3;
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Collision Resolution — Open Addressing
+
+            **Open addressing** finds another empty slot  
+            when a collision occurs.
+
+            Common strategies:
+            - Linear probing
+            - Quadratic probing
+            - Double hashing
+
+            mermaid
+            graph LR;
+              Collision --> Probe1 --> Probe2 --> EmptySlot;
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Load Factor
+
+            The **load factor** measures how full the table is.
+
+            ####α = n / m####
+
+            Where:
+            - *n* = number of elements
+            - *m* = number of buckets
+
+            A high load factor increases collisions.
+
+            mermaid
+            graph TD;
+              Elements --> LoadFactor;
+              Buckets --> LoadFactor;
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Resizing (Rehashing)
+
+            When the load factor is too high:
+            - The table is **resized**
+            - All elements are **rehashed**
+
+            This keeps operations efficient.
+
+            mermaid
+            graph LR;
+              OldTable --> Rehash --> NewTable;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # When to Use Hash Tables
+
+            Use hash tables when you need:
+            - Fast lookup by key
+            - No ordering requirements
+
+            Examples:
+            - Dictionaries
+            - Caches
+            - Symbol tables
+
+            mermaid
+            graph TD;
+              HashTable --> FastAccess;
+              HashTable --> KeyLookup;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercise — Implement a Hash Table
+
+            In this exercise, you will implement a **hash table** using an array  
+            and **collision handling with chaining**.
+
+            Your hash table should store **key–value pairs**  
+            and support basic operations.
+
+            ####h(key) = hash(key) mod m####
+
+            mermaid
+            graph TD;
+              Key --> HashFunction;
+              HashFunction --> Index;
+              Index --> Bucket;
+              Bucket --> Value;
+            /mermaid
+
+            ### Steps to Follow
+
+            1. Create a class `HashTable`
+            2. Initialize an internal array with a fixed size
+            3. Implement a **hash function** that maps keys to indices
+            4. Handle **collisions using chaining** (lists)
+            5. Implement the following methods:
+              - `put(key, value)`
+              - `get(key)`
+              - `remove(key)`
+
+            spoiler
+            ```
+            class HashTable:
+                def __init__(self, size=10):
+                    self.size = size
+                    self.table = [[] for _ in range(size)]
+
+                def _hash(self, key):
+                    return hash(key) % self.size
+
+                def put(self, key, value):
+                    index = self._hash(key)
+                    bucket = self.table[index]
+
+                    for i, (k, v) in enumerate(bucket):
+                        if k == key:
+                            bucket[i] = (key, value)
+                            return
+
+                    bucket.append((key, value))
+
+                def get(self, key):
+                    index = self._hash(key)
+                    bucket = self.table[index]
+
+                    for k, v in bucket:
+                        if k == key:
+                            return v
+
+                    return None
+
+                def remove(self, key):
+                    index = self._hash(key)
+                    bucket = self.table[index]
+
+                    for i, (k, v) in enumerate(bucket):
+                        if k == key:
+                            del bucket[i]
+                            return True
+
+                    return False
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

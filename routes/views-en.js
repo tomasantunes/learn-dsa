@@ -33,4 +33,8 @@ router.get('/en/queue', function(req, res, next) {
   res.render('content/en/queue');
 });
 
+router.get('/en/hash-table', function(req, res, next) {
+  res.render('content/en/hash-table');
+});
+
 module.exports = router;
