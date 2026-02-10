@@ -29,4 +29,8 @@ router.get('/en/stack', function(req, res, next) {
   res.render('content/en/stack');
 });
 
+router.get('/en/queue', function(req, res, next) {
+  res.render('content/en/queue');
+});
+
 module.exports = router;

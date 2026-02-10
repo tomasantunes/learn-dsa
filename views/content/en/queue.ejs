@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Queue</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Queue — What Is It?
+
+            A **queue** is a **linear data structure** that follows the principle:
+
+            **FIFO**
+
+            **First In, First Out**
+
+            The **first element added**  
+            is the **first one removed**.
+
+            Think of a real-life queue:  
+            people waiting in line.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Queue Operations
+
+            A queue supports these **core operations**:
+
+            - **Enqueue** → add an element to the **rear**
+            - **Dequeue** → remove an element from the **front**
+            - **Front / Peek** → view the first element
+            - **IsEmpty** → check if the queue is empty
+
+            All operations follow **FIFO order**.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Visualizing a Queue
+
+            Elements enter at the **rear**  
+            and leave from the **front**.
+
+            mermaid
+            graph LR;
+              F["Front"] --> A --> B --> C --> R["Rear"];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Enqueue Operation
+
+            **Enqueue** adds a new element  
+            to the **end of the queue**.
+
+            Example: enqueue `D`
+
+            mermaid
+            graph LR;
+              A --> B --> C --> D;
+            /mermaid
+
+            Time complexity:  
+            ####O(1)####
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Dequeue Operation
+
+            **Dequeue** removes the element  
+            from the **front of the queue**.
+
+            Example: dequeue `A`
+
+            mermaid
+            graph LR;
+              B --> C --> D;
+            /mermaid
+
+            Time complexity:  
+            ####O(1)####
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Front (Peek)
+
+            The **front** operation returns  
+            the **first element** without removing it.
+
+            If the queue is:
+
+            mermaid
+            graph LR;
+              A --> B --> C;
+            /mermaid
+
+            Then:
+
+            ####Front = A####
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Queue Implementation
+
+            A queue can be implemented using:
+
+            - **Arrays**
+            - **Linked Lists**
+            - **Circular Arrays**
+            - **Deques**
+
+            Each approach has different  
+            memory and resizing trade-offs.
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Queue vs Stack
+
+            | Queue | Stack |
+            |------|-------|
+            | FIFO | LIFO |
+            | Enqueue / Dequeue | Push / Pop |
+            | Used in scheduling | Used in recursion |
+
+            They solve **different problems**  
+            with different access rules.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Common Uses of Queues
+
+            Queues are used in:
+
+            - CPU & process scheduling
+            - Printer job management
+            - Breadth-First Search (BFS)
+            - Message queues
+            - Task pipelines
+
+            Whenever **order matters**,  
+            queues shine.
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Key Takeaways
+
+            - A queue follows **FIFO**
+            - Insert at the **rear**
+            - Remove from the **front**
+            - Enqueue & Dequeue are **O(1)**
+            - Widely used in real systems
+
+            Queues model **fair, ordered processing**.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercise — Implementing a Queue
+
+            Your task is to implement a **Queue** data structure  
+            that follows the **FIFO (First In, First Out)** principle.
+
+            You must support the following operations:
+            - **enqueue(value)** → add an element to the queue
+            - **dequeue()** → remove and return the front element
+            - **front()** → return the front element without removing it
+            - **is_empty()** → check if the queue is empty
+
+            ####FIFO = First In, First Out####
+
+            mermaid
+            graph LR;
+              F["Front"] --> A --> B --> C --> R["Rear"];
+            /mermaid
+
+            ### Steps to Solve
+
+            1. Create a `Queue` class  
+            2. Use a list to store elements  
+            3. Implement `enqueue` by adding to the end of the list  
+            4. Implement `dequeue` by removing from the front  
+            5. Handle the case when the queue is empty  
+
+            spoiler
+            ```
+            class Queue:
+                def __init__(self):
+                    self.items = []
+
+                def is_empty(self):
+                    return len(self.items) == 0
+
+                def enqueue(self, value):
+                    self.items.append(value)
+
+                def dequeue(self):
+                    if self.is_empty():
+                        raise IndexError("Dequeue from empty queue")
+                    return self.items.pop(0)
+
+                def front(self):
+                    if self.is_empty():
+                        raise IndexError("Front from empty queue")
+                    return self.items[0]
+
+
+            # Example usage
+            q = Queue()
+            q.enqueue(10)
+            q.enqueue(20)
+            q.enqueue(30)
+
+            print(q.dequeue())  # 10
+            print(q.front())    # 20
+            print(q.is_empty()) # False
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

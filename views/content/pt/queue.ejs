@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Queue</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Queue — O Que É?
+
+            Uma **queue (fila)** é uma **estrutura de dados linear** que segue o princípio:
+
+            **FIFO**
+
+            **First In, First Out**
+
+            O **primeiro elemento a entrar**  
+            é o **primeiro a sair**.
+
+            Tal como numa fila da vida real:  
+            as pessoas aguardam a sua vez.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Operações de uma Queue
+
+            Uma queue suporta as seguintes **operações principais**:
+
+            - **Enqueue** → adicionar um elemento no **fim**
+            - **Dequeue** → remover um elemento do **início**
+            - **Front / Peek** → ver o primeiro elemento
+            - **IsEmpty** → verificar se a queue está vazia
+
+            Todas as operações respeitam a ordem **FIFO**.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Visualização de uma Queue
+
+            Os elementos entram pelo **fim**  
+            e saem pelo **início**.
+
+            mermaid
+            graph LR;
+              F["Início"] --> A --> B --> C --> R["Fim"];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Operação Enqueue
+
+            **Enqueue** adiciona um novo elemento  
+            ao **fim da queue**.
+
+            Exemplo: enqueue `D`
+
+            mermaid
+            graph LR;
+              A --> B --> C --> D;
+            /mermaid
+
+            Complexidade temporal:  
+            ####O(1)####
+            </script>
+
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Operação Dequeue
+
+            **Dequeue** remove o elemento  
+            do **início da queue**.
+
+            Exemplo: dequeue `A`
+
+            mermaid
+            graph LR;
+              B --> C --> D;
+            /mermaid
+
+            Complexidade temporal:  
+            ####O(1)####
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Front (Peek)
+
+            A operação **front** devolve  
+            o **primeiro elemento** sem o remover.
+
+            Se a queue for:
+
+            mermaid
+            graph LR;
+              A --> B --> C;
+            /mermaid
+
+            Então:
+
+            ####Front = A####
+            </script>
+
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Implementação de uma Queue
+
+            Uma queue pode ser implementada usando:
+
+            - **Arrays**
+            - **Listas ligadas**
+            - **Arrays circulares**
+            - **Deques**
+
+            Cada abordagem tem diferentes  
+            custos de memória e desempenho.
+            </script>
+
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Queue vs Stack
+
+            | Queue | Stack |
+            |------|-------|
+            | FIFO | LIFO |
+            | Enqueue / Dequeue | Push / Pop |
+            | Usada em escalonamento | Usada em recursão |
+
+            Resolvemos **problemas diferentes**  
+            com regras de acesso diferentes.
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Usos Comuns de Queues
+
+            As queues são usadas em:
+
+            - Escalonamento de processos (CPU)
+            - Gestão de filas de impressão
+            - Pesquisa em largura (BFS)
+            - Sistemas de mensagens
+            - Pipelines de tarefas
+
+            Sempre que a **ordem importa**,  
+            as queues são ideais.
+            </script>
+
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Pontos-Chave
+
+            - Uma queue segue **FIFO**
+            - Inserção no **fim**
+            - Remoção no **início**
+            - Enqueue e Dequeue são **O(1)**
+            - Muito usada em sistemas reais
+
+            As queues modelam **processamento justo e ordenado**.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercício — Implementar uma Queue
+
+            O teu objectivo é implementar uma **Queue (Fila)**  
+            que siga o princípio **FIFO (First In, First Out)**.
+
+            A tua implementação deve suportar as seguintes operações:
+            - **enqueue(valor)** → adicionar um elemento à queue
+            - **dequeue()** → remover e devolver o primeiro elemento
+            - **front()** → devolver o primeiro elemento sem o remover
+            - **is_empty()** → verificar se a queue está vazia
+
+            ####FIFO = Primeiro a Entrar, Primeiro a Sair####
+
+            mermaid
+            graph LR;
+              F["Início"] --> A --> B --> C --> R["Fim"];
+            /mermaid
+
+            ### Passos para Resolver
+
+            1. Criar uma classe `Queue`  
+            2. Usar uma lista para armazenar os elementos  
+            3. Implementar `enqueue` adicionando ao fim da lista  
+            4. Implementar `dequeue` removendo do início  
+            5. Tratar o caso em que a queue está vazia  
+
+            spoiler
+            ```
+            class Queue:
+                def __init__(self):
+                    self.items = []
+
+                def is_empty(self):
+                    return len(self.items) == 0
+
+                def enqueue(self, valor):
+                    self.items.append(valor)
+
+                def dequeue(self):
+                    if self.is_empty():
+                        raise IndexError("Remoção de uma queue vazia")
+                    return self.items.pop(0)
+
+                def front(self):
+                    if self.is_empty():
+                        raise IndexError("Queue vazia")
+                    return self.items[0]
+
+
+            # Exemplo de utilização
+            q = Queue()
+            q.enqueue(10)
+            q.enqueue(20)
+            q.enqueue(30)
+
+            print(q.dequeue())  # 10
+            print(q.front())    # 20
+            print(q.is_empty()) # False
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
