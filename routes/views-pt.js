@@ -37,4 +37,12 @@ router.get('/pt/hash-table', function(req, res, next) {
   res.render('content/pt/hash-table');
 });
 
+router.get('/pt/sorting-intro', function(req, res, next) {
+  res.render('content/pt/sorting-intro');
+});
+
+router.get('/pt/bubble-sort', function(req, res, next) {
+  res.render('content/pt/bubble-sort');
+});
+
 module.exports = router;

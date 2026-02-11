@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Ordenação - Introdução</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Algoritmos de Ordenação — Visão Geral
+
+            Ordenar é o processo de organizar elementos  
+            numa determinada ordem (normalmente crescente ou decrescente).
+
+            Exemplos:
+            - Números → 1, 2, 3, 4
+            - Strings → "maçã", "banana", "laranja"
+
+            Porque é importante ordenar:
+            - Permite pesquisas mais eficientes
+            - Torna os dados mais fáceis de analisar
+            - Melhora a legibilidade
+            - É requisito para muitos algoritmos
+
+            Ordenar transforma:
+
+            Desordenado → Ordenado
+
+            mermaid
+            graph LR;
+              A[5] --> B[1] --> C[4] --> D[2];
+              D --> E[1] --> F[2] --> G[4] --> H[5];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Complexidade Temporal
+
+            A eficiência de um algoritmo de ordenação  
+            é medida usando a notação **Big-O**.
+
+            ####O(n)####  
+            ####O(n log n)####  
+            ####O(n^2)####  
+
+            - **n** = número de elementos
+            - Descreve como o tempo de execução cresce com o tamanho da entrada
+
+            Complexidades comuns:
+            - Quadrática → O(n^2)
+            - Linearítmica → O(n log n)
+            - Linear → O(n)
+
+            mermaid
+            graph TD;
+              A[Tamanho da entrada n] --> B[Algoritmo];
+              B --> C[Complexidade Temporal];
+              C --> D[Desempenho];
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Ordenação por Comparação vs Não Comparativa
+
+            ## Baseada em Comparação
+
+            Os elementos são comparados diretamente:
+
+            if a < b
+
+            Exemplos:
+            - Bubble Sort
+            - Insertion Sort
+            - Merge Sort
+            - Quick Sort
+
+            Limite inferior para ordenação por comparação:
+
+            ####Ω(n log n)####
+
+            ## Não Comparativa
+
+            Não compara os elementos diretamente.
+
+            Exemplos:
+            - Counting Sort
+            - Radix Sort
+            - Bucket Sort
+
+            mermaid
+            graph LR;
+              A[Algoritmos de Ordenação] --> B[Comparação];
+              A --> C[Não Comparativa];
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Propriedades Fundamentais dos Algoritmos de Ordenação
+
+            ## Estabilidade
+
+            Um algoritmo é **estável** se elementos iguais  
+            mantêm a sua ordem relativa original.
+
+            Exemplo:
+
+            (2, A), (2, B)
+
+            Estável → (2, A), (2, B)  
+            Instável → (2, B), (2, A)
+
+            ## In-Place
+
+            Utiliza memória extra constante:
+
+            ####O(1)#### espaço
+
+            ## Adaptativo
+
+            Tem melhor desempenho se os dados estiverem parcialmente ordenados.
+
+            mermaid
+            graph TD;
+              A[Algoritmo de Ordenação] --> B[Estável?];
+              A --> C[In-Place?];
+              A --> D[Adaptativo?];
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Algoritmos de Ordenação Mais Comuns
+
+            ## Algoritmos Simples
+            - Bubble Sort → O(n^2)
+            - Selection Sort → O(n^2)
+            - Insertion Sort → O(n^2)
+
+            ## Algoritmos Eficientes
+            - Merge Sort → O(n log n)
+            - Quick Sort → O(n log n) em média
+            - Heap Sort → O(n log n)
+
+            Compromissos (trade-offs):
+            - Velocidade
+            - Utilização de memória
+            - Estabilidade
+            - Complexidade de implementação
+
+            mermaid
+            graph LR;
+              A[Simples] --> B[Quadráticos];
+              C[Eficientes] --> D[Linearítmicos];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
