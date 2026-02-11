@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Hash Table</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Tabelas de Dispersão — O Que São?
+
+            Uma **tabela de dispersão** é uma **estrutura de dados**  
+            que armazena **pares chave–valor**.
+
+            Permite acesso **muito rápido** aos dados  
+            utilizando uma **função de dispersão**.
+
+            Complexidade média:
+            - **Inserir:** O(1)
+            - **Procurar:** O(1)
+            - **Remover:** O(1)
+
+            mermaid
+            graph TD;
+              Chave --> FuncaoHash;
+              FuncaoHash --> Indice;
+              Indice --> Valor;
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Pares Chave–Valor
+
+            Cada elemento numa tabela de dispersão tem:
+            - uma **chave** (identificador)
+            - um **valor** (dados)
+
+            Exemplo:
+            - Chave: `"nome"`
+            - Valor: `"Alice"`
+
+            A chave é usada para **localizar** o valor.
+
+            mermaid
+            graph LR;
+              Chave["Chave: 'nome'"] --> Valor["Valor: 'Alice'"];
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Função de Dispersão
+
+            Uma **função de dispersão**:
+            - Recebe uma **chave**
+            - Produz um **índice inteiro**
+
+            Esse índice determina  
+            onde o valor é armazenado em memória.
+
+            ####h(chave) → índice####
+
+            mermaid
+            graph TD;
+              Chave --> FuncaoHash;
+              FuncaoHash --> Indice;
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Estrutura da Tabela
+
+            Internamente, uma tabela de dispersão é normalmente:
+            - Um **array**
+            - Indexado através do resultado da função de dispersão
+
+            Cada posição chama-se um **balde** (bucket).
+
+            mermaid
+            graph LR;
+              A["Índice 0"] --> B["Índice 1"] --> C["Índice 2"] --> D["Índice 3"];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Colisões
+
+            Uma **colisão** acontece quando:
+            - Duas chaves diferentes
+            - Produzem o **mesmo índice**
+
+            Isto é inevitável na prática.
+
+            ####h(chave₁) = h(chave₂)####
+
+            mermaid
+            graph TD;
+              Chave1 --> Indice;
+              Chave2 --> Indice;
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Resolução de Colisões — Encadeamento
+
+            O **encadeamento** guarda vários valores  
+            no mesmo balde usando uma lista.
+
+            Cada balde contém:
+            - Uma lista ligada (ou estrutura semelhante)
+
+            mermaid
+            graph TD;
+              Indice --> No1 --> No2 --> No3;
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Resolução de Colisões — Endereçamento Aberto
+
+            O **endereçamento aberto** procura outra posição livre  
+            quando ocorre uma colisão.
+
+            Estratégias comuns:
+            - Sondagem linear
+            - Sondagem quadrática
+            - Dupla dispersão
+
+            mermaid
+            graph LR;
+              Colisao --> Sondagem1 --> Sondagem2 --> PosicaoLivre;
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Fator de Carga
+
+            O **fator de carga** mede o quão cheia está a tabela.
+
+            ####α = n / m####
+
+            Onde:
+            - *n* = número de elementos
+            - *m* = número de baldes
+
+            Um fator de carga elevado aumenta as colisões.
+
+            mermaid
+            graph TD;
+              Elementos --> FatorCarga;
+              Baldes --> FatorCarga;
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Redimensionamento (Rehashing)
+
+            Quando o fator de carga é demasiado elevado:
+            - A tabela é **redimensionada**
+            - Todos os elementos são **rehashados**
+
+            Isto mantém as operações eficientes.
+
+            mermaid
+            graph LR;
+              TabelaAntiga --> Rehash --> TabelaNova;
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Quando Usar Tabelas de Dispersão
+
+            Use tabelas de dispersão quando precisar de:
+            - Pesquisa rápida por chave
+            - Sem necessidade de ordenação
+
+            Exemplos:
+            - Dicionários
+            - Caches
+            - Tabelas de símbolos
+
+            mermaid
+            graph TD;
+              TabelaHash --> AcessoRapido;
+              TabelaHash --> PesquisaPorChave;
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercício — Implementar uma Tabela de Dispersão
+
+            Neste exercício, vais implementar uma **tabela de dispersão**  
+            utilizando um array e **resolução de colisões por encadeamento**.
+
+            A tua estrutura deve armazenar **pares chave–valor**  
+            e suportar operações básicas.
+
+            ####h(chave) = hash(chave) mod m####
+
+            mermaid
+            graph TD;
+              Chave --> FuncaoHash;
+              FuncaoHash --> Indice;
+              Indice --> Balde;
+              Balde --> Valor;
+            /mermaid
+
+            ### Passos a Seguir
+
+            1. Criar uma classe `HashTable`
+            2. Inicializar um array interno com tamanho fixo
+            3. Implementar uma **função de dispersão**
+            4. Tratar **colisões com encadeamento** (listas)
+            5. Implementar os métodos:
+              - `put(chave, valor)`
+              - `get(chave)`
+              - `remove(chave)`
+
+            spoiler
+            ```
+            class HashTable:
+                def __init__(self, size=10):
+                    self.size = size
+                    self.table = [[] for _ in range(size)]
+
+                def _hash(self, key):
+                    return hash(key) % self.size
+
+                def put(self, key, value):
+                    index = self._hash(key)
+                    bucket = self.table[index]
+
+                    for i, (k, v) in enumerate(bucket):
+                        if k == key:
+                            bucket[i] = (key, value)
+                            return
+
+                    bucket.append((key, value))
+
+                def get(self, key):
+                    index = self._hash(key)
+                    bucket = self.table[index]
+
+                    for k, v in bucket:
+                        if k == key:
+                            return v
+
+                    return None
+
+                def remove(self, key):
+                    index = self._hash(key)
+                    bucket = self.table[index]
+
+                    for i, (k, v) in enumerate(bucket):
+                        if k == key:
+                            del bucket[i]
+                            return True
+
+                    return False
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+        
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
