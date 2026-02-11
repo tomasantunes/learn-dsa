@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Sorting - Introduction</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Sorting Algorithms — Overview
+
+            Sorting is the process of arranging elements  
+            in a specific order (usually ascending or descending).
+
+            Examples:
+            - Numbers → 1, 2, 3, 4
+            - Strings → "apple", "banana", "orange"
+
+            Why sorting matters:
+            - Enables efficient searching
+            - Makes data easier to analyze
+            - Improves readability
+            - Required by many algorithms
+
+            Sorting transforms:
+
+            Unordered → Ordered
+
+            mermaid
+            graph LR;
+              A[5] --> B[1] --> C[4] --> D[2];
+              D --> E[1] --> F[2] --> G[4] --> H[5];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Time Complexity
+
+            The efficiency of a sorting algorithm  
+            is measured using **Big-O notation**.
+
+            ####O(n)####  
+            ####O(n log n)####  
+            ####O(n^2)####  
+
+            - **n** = number of elements
+            - Describes how runtime grows with input size
+
+            Common complexities:
+            - Quadratic → O(n^2)
+            - Linearithmic → O(n log n)
+            - Linear → O(n)
+
+            mermaid
+            graph TD;
+              A[Input Size n] --> B[Algorithm];
+              B --> C[Time Complexity];
+              C --> D[Performance];
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Comparison vs Non-Comparison Sorting
+
+            ## Comparison-Based
+
+            Elements are compared directly:
+
+            if a < b
+
+            Examples:
+            - Bubble Sort
+            - Insertion Sort
+            - Merge Sort
+            - Quick Sort
+
+            Lower bound for comparison sorting:
+
+            ####Ω(n log n)####
+
+            ## Non-Comparison
+
+            Do not compare elements directly.
+
+            Examples:
+            - Counting Sort
+            - Radix Sort
+            - Bucket Sort
+
+            mermaid
+            graph LR;
+              A[Sorting Algorithms] --> B[Comparison];
+              A --> C[Non-Comparison];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Key Properties of Sorting Algorithms
+
+            ## Stability
+
+            A sorting algorithm is **stable** if equal elements  
+            keep their original relative order.
+
+            Example:
+
+            (2, A), (2, B)
+
+            Stable → (2, A), (2, B)  
+            Unstable → (2, B), (2, A)
+
+            ## In-Place
+
+            Uses constant extra memory:
+
+            ####O(1)#### space
+
+            ## Adaptive
+
+            Performs better if data is partially sorted.
+
+            mermaid
+            graph TD;
+              A[Sorting Algorithm] --> B[Stable?];
+              A --> C[In-Place?];
+              A --> D[Adaptive?];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Common Sorting Algorithms
+
+            ## Simple Algorithms
+            - Bubble Sort → O(n^2)
+            - Selection Sort → O(n^2)
+            - Insertion Sort → O(n^2)
+
+            ## Efficient Algorithms
+            - Merge Sort → O(n log n)
+            - Quick Sort → O(n log n) average
+            - Heap Sort → O(n log n)
+
+            Trade-offs:
+            - Speed
+            - Memory usage
+            - Stability
+            - Implementation complexity
+
+            mermaid
+            graph LR;
+              A[Simple] --> B[Quadratic];
+              C[Efficient] --> D[Linearithmic];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

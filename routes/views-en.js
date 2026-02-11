@@ -37,4 +37,8 @@ router.get('/en/hash-table', function(req, res, next) {
   res.render('content/en/hash-table');
 });
 
+router.get('/en/sorting-intro', function(req, res, next) {
+  res.render('content/en/sorting-intro');
+});
+
 module.exports = router;
