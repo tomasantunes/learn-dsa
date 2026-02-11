@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Bubble Sort</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Bubble Sort — What Is It?
+
+            **Bubble Sort** is a simple comparison-based sorting algorithm.
+
+            It repeatedly:
+            - Compares adjacent elements
+            - Swaps them if they are in the wrong order
+            - Repeats until the list is sorted
+
+            The largest elements "bubble" to the end.
+
+            Example:
+
+            [5, 3, 8, 4]
+
+            After first pass:
+
+            [3, 5, 4, 8]
+
+            mermaid
+            graph LR;
+              A[5] --> B[3]
+              B --> C[8]
+              C --> D[4]
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # How Bubble Sort Works
+
+            Bubble Sort works in **passes**.
+
+            In each pass:
+            - Start from index 0
+            - Compare element i with i+1
+            - Swap if left > right
+            - Continue until the end
+
+            After each pass:
+            - The largest unsorted element is placed correctly.
+
+            ####Number of comparisons per pass: n - 1####
+
+            mermaid
+            graph TD;
+              Start --> Compare
+              Compare --> Swap
+              Swap --> Next
+              Next --> EndPass
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Step-by-Step Example
+
+            Sort this list:
+
+            [7, 2, 5, 1]
+
+            ### Pass 1
+            7 & 2 → swap → [2,7,5,1]  
+            7 & 5 → swap → [2,5,7,1]  
+            7 & 1 → swap → [2,5,1,7]
+
+            Largest element (7) is now fixed.
+
+            mermaid
+            graph LR;
+              A[7] -->|swap| B[2]
+              B --> C[5]
+              C --> D[1]
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Time Complexity
+
+            Worst case (reverse order):
+
+            Number of comparisons:
+
+            ####(n - 1) + (n - 2) + ... + 1####
+
+            Which equals:
+
+            ####n(n - 1) / 2####
+
+            Time Complexity:
+            - Worst Case: O(n²)
+            - Average Case: O(n²)
+            - Best Case (optimized): O(n)
+
+            Space Complexity:
+            - O(1) (in-place sorting)
+
+            mermaid
+            graph TD;
+              N --> N2["n² growth"]
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Optimized Bubble Sort
+
+            We can improve Bubble Sort by adding a **swap flag**.
+
+            If during a pass:
+            - No swaps occur
+            - The array is already sorted
+            - We stop early
+
+            Pseudo-code:
+
+            for i in range(n):
+                swapped = False
+                for j in range(0, n-i-1):
+                    if arr[j] > arr[j+1]:
+                        swap()
+                        swapped = True
+                if not swapped:
+                    break
+
+            mermaid
+            graph TD;
+              Start --> Loop
+              Loop --> CheckSwap
+              CheckSwap -->|No swaps| Stop
+              CheckSwap -->|Swaps| NextPass
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercise — Implement Bubble Sort
+
+            Implement the **Bubble Sort** algorithm from scratch.
+
+            Your function must:
+            - Receive a list of numbers
+            - Sort the list in ascending order
+            - Return the sorted list
+
+            ---
+
+            ## Steps to Follow
+
+            1. Loop through the list multiple times (passes).
+            2. In each pass, compare adjacent elements.
+            3. If the left element is greater than the right element:
+              - Swap them.
+            4. After each pass, the largest unsorted element should be at the end.
+            5. Stop early if no swaps occur in a pass (optimization).
+
+            ---
+
+            Sort this example:
+
+            [6, 3, 9, 1, 4]
+
+            ####Worst-case comparisons = n(n - 1) / 2####
+
+            mermaid
+            graph TD;
+              Start --> Pass1
+              Pass1 --> Compare
+              Compare --> Swap
+              Swap --> NextComparison
+              NextComparison --> EndPass
+              EndPass --> Sorted
+            /mermaid
+
+            spoiler
+            ```
+            def bubble_sort(arr):
+                n = len(arr)
+
+                for i in range(n):
+                    swapped = False
+
+                    for j in range(0, n - i - 1):
+                        if arr[j] > arr[j + 1]:
+                            # Swap elements
+                            arr[j], arr[j + 1] = arr[j + 1], arr[j]
+                            swapped = True
+
+                    # Stop early if no swaps occurred
+                    if not swapped:
+                        break
+
+                return arr
+
+
+            # Example usage
+            numbers = [6, 3, 9, 1, 4]
+            sorted_numbers = bubble_sort(numbers)
+            print(sorted_numbers)
+            ```
+            /spoiler
+            </script>
+
+          </div>
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
