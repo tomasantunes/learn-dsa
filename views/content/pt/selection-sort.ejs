@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Selection Sort</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Selection Sort (Ordenação por Seleção)
+
+            Um algoritmo simples de ordenação baseado em comparações.
+
+            - Seleciona repetidamente o menor elemento
+            - Coloca-o na posição correta
+            - Divide o array em parte **ordenada** e **não ordenada**
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Ideia Principal
+
+            Em cada passo:
+
+            1. Encontrar o menor elemento na parte não ordenada
+            2. Trocar com o primeiro elemento não ordenado
+            3. Aumentar a parte ordenada em uma posição
+
+            Ordenado | Não Ordenado  
+            :---:|:---:
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exemplo Passo a Passo
+
+            Ordenar o array:
+
+            [64, 25, 12, 22, 11]
+
+            **Passagem 1**
+            - Mínimo = 11
+            - Trocar com 64
+
+            Resultado:
+            [11, 25, 12, 22, 64]
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Representação Visual
+
+            mermaid
+            graph LR;
+              A[64] --> B[25];
+              B --> C[12];
+              C --> D[22];
+              D --> E[11];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Estrutura do Algoritmo
+
+            Para um array de tamanho n:
+
+            - O ciclo externo vai de 0 até n-1
+            - O ciclo interno procura o mínimo de i até n-1
+            - Depois troca os elementos
+
+            Pseudo-código:
+
+            for i = 0 até n-1  
+                min_index = i  
+                for j = i+1 até n-1  
+                    se arr[j] < arr[min_index]  
+                        min_index = j  
+                trocar(arr[i], arr[min_index])
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Número de Comparações
+
+            O Selection Sort realiza sempre:
+
+            (n - 1) + (n - 2) + ... + 1 comparações
+
+            O que equivale a:
+
+            #### n(n - 1) / 2 ####
+
+            Complexidade Temporal:
+
+            - Melhor Caso: O(n²)
+            - Caso Médio: O(n²)
+            - Pior Caso: O(n²)
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Análise das Trocas
+
+            Ao contrário do Bubble Sort:
+
+            - Máximo de n - 1 trocas
+            - Apenas uma troca por iteração externa
+
+            Útil quando:
+            - As trocas são dispendiosas
+            - Queremos minimizar escritas em memória
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Complexidade Espacial
+
+            O Selection Sort é:
+
+            - Um algoritmo in-place
+            - Requer apenas O(1) espaço extra
+
+            Não:
+            - Cria arrays auxiliares
+            - Utiliza recursão
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # É Estável?
+
+            A versão padrão do Selection Sort é:
+
+            ❌ Não estável
+
+            Exemplo:
+
+            [4a, 4b, 2]
+
+            Depois de ordenar:
+            [2, 4b, 4a]
+
+            A ordem relativa foi alterada.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Quando Utilizar?
+
+            Adequado para:
+
+            - Conjuntos de dados pequenos
+            - Fins pedagógicos
+            - Situações onde as trocas são caras
+
+            Não recomendado para:
+
+            - Grandes volumes de dados
+            - Sistemas críticos em desempenho
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercício: Implementar Selection Sort
+
+            ## Objetivo
+
+            Implementar o algoritmo **Selection Sort** de raiz.
+
+            Deves ordenar uma lista de inteiros por ordem crescente sem utilizar funções de ordenação incorporadas.
+
+            ---
+
+            ## Problema
+
+            Dada a lista:
+
+            [29, 10, 14, 37, 13]
+
+            Escreve uma função:
+
+            selection_sort(arr)
+
+            que devolva a lista ordenada.
+
+            ---
+
+            ## Passos Necessários
+
+            Segue cuidadosamente estes passos:
+
+            1. Começa no índice i = 0
+            2. Assume que o mínimo está na posição i
+            3. Percorre o resto do array (de i+1 até ao fim)
+            4. Atualiza o índice do mínimo se encontrares um valor menor
+            5. Troca o elemento na posição i com o mínimo encontrado
+            6. Avança para a próxima posição (i = i + 1)
+            7. Repete até o array estar ordenado
+
+            ---
+
+            ## Fluxo do Algoritmo
+
+            mermaid
+            graph TD;
+              A[Começar em i] --> B[Assumir min = i];
+              B --> C[Percorrer resto do array];
+              C --> D{Encontrou menor?};
+              D -- Sim --> E[Atualizar índice mínimo];
+              D -- Não --> F[Continuar];
+              E --> C;
+              F --> G[Trocar arr[i] com arr[min]];
+              G --> H[Incrementar i];
+              H --> I{Fim do array?};
+              I -- Não --> B;
+              I -- Sim --> J[Terminado];
+            /mermaid
+
+            ---
+
+            ## Recordar Complexidade
+
+            O Selection Sort realiza:
+
+            #### n(n - 1) / 2 ####
+
+            comparações.
+
+            Complexidade Temporal = O(n²)
+
+            ---
+
+            ## Tarefa
+
+            - Implementa a função
+            - Não utilizes sorted() nem list.sort()
+            - Testa com diferentes listas
+            - Experimenta imprimir o array após cada passagem
+
+            ---
+
+            spoiler
+            ```
+            def selection_sort(arr):
+                n = len(arr)
+                
+                for i in range(n):
+                    min_index = i
+                    
+                    for j in range(i + 1, n):
+                        if arr[j] < arr[min_index]:
+                            min_index = j
+                    
+                    # Trocar o mínimo encontrado com o primeiro elemento não ordenado
+                    arr[i], arr[min_index] = arr[min_index], arr[i]
+                
+                return arr
+
+
+            # Exemplo de utilização
+            numeros = [29, 10, 14, 37, 13]
+            numeros_ordenados = selection_sort(numeros)
+
+            print("Lista ordenada:", numeros_ordenados)
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

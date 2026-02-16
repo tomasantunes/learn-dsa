@@ -45,4 +45,8 @@ router.get('/pt/bubble-sort', function(req, res, next) {
   res.render('content/pt/bubble-sort');
 });
 
+router.get('/pt/selection-sort', function(req, res, next) {
+  res.render('content/pt/selection-sort');
+});
+
 module.exports = router;
