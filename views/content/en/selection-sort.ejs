@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Selection Sort</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Selection Sort
+
+            A simple comparison-based sorting algorithm.
+
+            - Repeatedly selects the smallest element
+            - Places it in its correct position
+            - Divides the array into **sorted** and **unsorted** parts
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Core Idea
+
+            At each step:
+
+            1. Find the minimum element in the unsorted portion
+            2. Swap it with the first unsorted element
+            3. Expand the sorted portion by one element
+
+            Sorted | Unsorted  
+            :---:|:---:
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Step-by-Step Example
+
+            Sort the array:
+
+            [64, 25, 12, 22, 11]
+
+            **Pass 1**
+            - Minimum = 11
+            - Swap with 64
+
+            Result:
+            [11, 25, 12, 22, 64]
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Visual Representation
+
+            mermaid
+            graph LR;
+              A[64] --> B[25];
+              B --> C[12];
+              C --> D[22];
+              D --> E[11];
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Algorithm Structure
+
+            For an array of size n:
+
+            - Outer loop runs from 0 to n-1
+            - Inner loop finds minimum from i to n-1
+            - Swap elements
+
+            Pseudo logic:
+
+            for i = 0 to n-1  
+                min_index = i  
+                for j = i+1 to n-1  
+                    if arr[j] < arr[min_index]  
+                        min_index = j  
+                swap(arr[i], arr[min_index])
+            </script>
+
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Number of Comparisons
+
+            Selection Sort always performs:
+
+            (n - 1) + (n - 2) + ... + 1 comparisons
+
+            Which equals:
+
+            #### n(n - 1) / 2 ####
+
+            Time Complexity:
+
+            - Best Case: O(n²)
+            - Average Case: O(n²)
+            - Worst Case: O(n²)
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Swaps Analysis
+
+            Unlike Bubble Sort:
+
+            - Maximum of n - 1 swaps
+            - Swaps only once per outer iteration
+
+            Useful when:
+            - Swapping is expensive
+            - Memory writes must be minimized
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Space Complexity
+
+            Selection Sort is:
+
+            - In-place algorithm
+            - Requires O(1) extra space
+
+            It does not:
+            - Create auxiliary arrays
+            - Use recursion
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Is It Stable?
+
+            Standard Selection Sort is:
+
+            ❌ Not stable
+
+            Example:
+
+            [4a, 4b, 2]
+
+            After sorting:
+            [2, 4b, 4a]
+
+            Relative order changed.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # When Should You Use It?
+
+            Good for:
+
+            - Small datasets
+            - Educational purposes
+            - Situations with costly swaps
+
+            Not recommended for:
+
+            - Large datasets
+            - Performance-critical systems
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercise: Implement Selection Sort
+
+            ## Objective
+
+            Implement the **Selection Sort** algorithm from scratch.
+
+            You must sort a list of integers in ascending order without using built-in sorting functions.
+
+            ---
+
+            ## Problem
+
+            Given the list:
+
+            [29, 10, 14, 37, 13]
+
+            Write a function:
+
+            selection_sort(arr)
+
+            that returns the sorted list.
+
+            ---
+
+            ## Required Steps
+
+            Follow these algorithm steps carefully:
+
+            1. Start at index i = 0
+            2. Assume the minimum element is at position i
+            3. Scan the rest of the array (from i+1 to end)
+            4. Update the minimum index if a smaller value is found
+            5. Swap the element at index i with the minimum element
+            6. Move to the next position (i = i + 1)
+            7. Repeat until the array is sorted
+
+            ---
+
+            ## Algorithm Flow
+
+            mermaid
+            graph TD;
+              A[Start at i] --> B[Assume min = i];
+              B --> C[Scan rest of array];
+              C --> D{Smaller found?};
+              D -- Yes --> E[Update min index];
+              D -- No --> F[Continue scanning];
+              E --> C;
+              F --> G[Swap arr[i] with arr[min]];
+              G --> H[Increment i];
+              H --> I{End of array?};
+              I -- No --> B;
+              I -- Yes --> J[Finished];
+            /mermaid
+
+            ---
+
+            ## Complexity Reminder
+
+            Selection Sort performs:
+
+            #### n(n - 1) / 2 ####
+
+            comparisons, which means:
+
+            Time Complexity = O(n²)
+
+            ---
+
+            ## Your Task
+
+            - Implement the function
+            - Do not use sorted() or list.sort()
+            - Test your solution with different inputs
+            - Try printing the array after each pass to observe progress
+
+            ---
+
+            spoiler
+            ```
+            def selection_sort(arr):
+                n = len(arr)
+                
+                for i in range(n):
+                    min_index = i
+                    
+                    for j in range(i + 1, n):
+                        if arr[j] < arr[min_index]:
+                            min_index = j
+                    
+                    # Swap the found minimum element with the first unsorted element
+                    arr[i], arr[min_index] = arr[min_index], arr[i]
+                
+                return arr
+
+
+            # Example usage
+            numbers = [29, 10, 14, 37, 13]
+            sorted_numbers = selection_sort(numbers)
+
+            print("Sorted list:", sorted_numbers)
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
