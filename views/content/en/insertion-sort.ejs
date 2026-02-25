@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Insertion Sort</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Insertion Sort
+            ### Sorting Algorithm
+
+            Insertion Sort is a simple and intuitive sorting algorithm.
+
+            It works the same way you sort playing cards in your hand:
+            - Pick one element
+            - Insert it into the correct position
+            - Repeat until sorted
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Basic Idea
+
+            Insertion Sort builds the sorted array **one element at a time**.
+
+            Steps:
+
+            1. Assume the first element is sorted
+            2. Take the next element
+            3. Insert it into the sorted portion
+            4. Repeat until finished
+
+            Sorted portion grows each step.
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Example List
+
+            Unsorted list:
+
+            8 3 5 2 9
+
+            Sorted portion initially:
+
+            [8] 3 5 2 9
+
+            We will insert elements one by one.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Step 1
+
+            Insert 3 into sorted portion:
+
+            Before:
+
+            [8] 3 5 2 9
+
+            After:
+
+            [3 8] 5 2 9
+
+            3 is moved before 8.
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Step 2
+
+            Insert 5 into sorted portion:
+
+            Before:
+
+            [3 8] 5 2 9
+
+            After:
+
+            [3 5 8] 2 9
+
+            5 goes between 3 and 8.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Step 3
+
+            Insert 2 into sorted portion:
+
+            Before:
+
+            [3 5 8] 2 9
+
+            After:
+
+            [2 3 5 8] 9
+
+            2 becomes the first element.
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Step 4
+
+            Insert 9 into sorted portion:
+
+            Before:
+
+            [2 3 5 8] 9
+
+            After:
+
+            [2 3 5 8 9]
+
+            The list is now sorted.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Algorithm
+
+            Pseudo-code:
+
+            FOR i = 1 to n-1
+
+                key = array[i]
+
+                j = i - 1
+
+                WHILE j >= 0 AND array[j] > key
+
+                    array[j+1] = array[j]
+
+                    j = j - 1
+
+                array[j+1] = key
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Complexity
+
+            Best Case (already sorted):
+
+            O(n)
+
+            Worst Case (reverse order):
+
+            O(n^2)
+
+            Average Case:
+
+            O(n^2)
+
+            Insertion Sort is efficient for **small datasets**.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Characteristics
+
+            Advantages:
+
+            - Simple to understand
+            - Easy to implement
+            - Works well for small arrays
+            - Stable sort
+
+            Disadvantages:
+
+            - Slow for large datasets
+            - Many comparisons and shifts
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Characteristics
+
+            Advantages:
+
+            - Simple to understand
+            - Easy to implement
+            - Works well for small arrays
+            - Stable sort
+
+            Disadvantages:
+
+            - Slow for large datasets
+            - Many comparisons and shifts
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Visualization
+
+            mermaid
+            graph LR;
+              A[8] --> B[3];
+              B --> C[5];
+              C --> D[2];
+              D --> E[9];
+
+              A --> S1[Insert 3];
+              S1 --> S2[Insert 5];
+              S2 --> S3[Insert 2];
+              S3 --> S4[Insert 9];
+            /mermaid
+
+            Each element is inserted into the sorted portion.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercise: Implement Insertion Sort
+
+            Your task is to implement the **Insertion Sort algorithm** in Python.
+
+            Insertion Sort works by:
+
+            - Starting with the second element
+            - Comparing it with previous elements
+            - Shifting larger elements to the right
+            - Inserting the element in the correct position
+
+            Example input:
+
+            8 3 5 2 9
+
+            Expected output:
+
+            2 3 5 8 9
+
+
+            ## Steps to Follow
+
+            ### Step 1 — Create the Function
+
+            Create a Python function called:
+
+            insertion_sort(arr)
+
+            The function should:
+
+            - Receive a list of numbers
+            - Sort the list using insertion sort
+            - Return the sorted list
+
+
+            ### Step 2 — Loop Through the List
+
+            Insertion Sort starts at index **1**.
+
+            For each element:
+
+            - Store the current value in a variable called **key**
+            - Compare it with previous elements
+
+            Pseudo-logic:
+
+            FOR i from 1 to length-1
+
+                key = arr[i]
+
+
+            ### Step 3 — Shift Elements
+
+            While previous elements are larger than **key**:
+
+            - Move elements one position to the right
+
+            Pseudo-logic:
+
+            WHILE j >= 0 AND arr[j] > key
+
+                arr[j+1] = arr[j]
+
+                j = j - 1
+
+
+            ### Step 4 — Insert the Element
+
+            After shifting elements:
+
+            Insert the key in the correct position.
+
+            Pseudo-logic:
+
+            arr[j+1] = key
+
+
+            ### Step 5 — Test Your Program
+
+            Test your function with different lists.
+
+            Example 1:
+
+            [5,4,3,2,1]
+
+            Expected:
+
+            [1,2,3,4,5]
+
+
+            Example 2:
+
+            [1,2,3,4]
+
+            Expected:
+
+            [1,2,3,4]
+
+
+            Example 3:
+
+            [7,2,9,1]
+
+            Expected:
+
+            [1,2,7,9]
+
+
+            ## Visualization
+
+            mermaid
+            graph LR;
+              A[8] --> B[3];
+              B --> C[5];
+              C --> D[2];
+              D --> E[9];
+              E --> F[Sorted List];
+            /mermaid
+
+
+            ## Solution
+
+            spoiler
+            Python solution:
+
+            def insertion_sort(arr):
+              for i in range(1, len(arr)):
+
+                  key = arr[i]
+                  j = i - 1
+
+                  while j >= 0 and arr[j] > key:
+                      arr[j + 1] = arr[j]
+                      j -= 1
+
+                  arr[j + 1] = key
+
+              return arr
+
+            Example usage
+
+            numbers = [8, 3, 5, 2, 9]
+            sorted_numbers = insertion_sort(numbers)
+
+            print(sorted_numbers)
+
+            numbers = [8, 3, 5, 2, 9]
+            sorted_numbers = insertion_sort(numbers)
+
+            print(sorted_numbers)
+
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

@@ -49,4 +49,8 @@ router.get('/en/selection-sort', function(req, res, next) {
   res.render('content/en/selection-sort');
 });
 
+router.get('/en/insertion-sort', function(req, res, next) {
+  res.render('content/en/insertion-sort');
+});
+
 module.exports = router;
