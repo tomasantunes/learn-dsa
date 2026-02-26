@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Insertion Sort</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Ordenação por Inserção
+            ### Algoritmo de Ordenação
+
+            A **Ordenação por Inserção** é um algoritmo simples e intuitivo.
+
+            Funciona de forma semelhante a ordenar cartas na mão:
+
+            - Escolher um elemento
+            - Inserir na posição correta
+            - Repetir até estar ordenado
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Ideia Básica
+
+            A Ordenação por Inserção constrói a lista ordenada **um elemento de cada vez**.
+
+            Passos:
+
+            1. Assumir que o primeiro elemento está ordenado
+            2. Escolher o elemento seguinte
+            3. Inserir na parte ordenada
+            4. Repetir até ao fim
+
+            A parte ordenada cresce a cada passo.
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Lista de Exemplo
+
+            Lista desordenada:
+
+            8 3 5 2 9
+
+            Parte ordenada inicialmente:
+
+            [8] 3 5 2 9
+
+            Vamos inserir os elementos um a um.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Passo 1
+
+            Inserir 3 na parte ordenada:
+
+            Antes:
+
+            [8] 3 5 2 9
+
+            Depois:
+
+            [3 8] 5 2 9
+
+            O 3 é colocado antes do 8.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Passo 2
+
+            Inserir 5 na parte ordenada:
+
+            Antes:
+
+            [3 8] 5 2 9
+
+            Depois:
+
+            [3 5 8] 2 9
+
+            O 5 fica entre o 3 e o 8.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Passo 3
+
+            Inserir 2 na parte ordenada:
+
+            Antes:
+
+            [3 5 8] 2 9
+
+            Depois:
+
+            [2 3 5 8] 9
+
+            O 2 passa a ser o primeiro elemento.
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Passo 4
+
+            Inserir 9 na parte ordenada:
+
+            Antes:
+
+            [2 3 5 8] 9
+
+            Depois:
+
+            [2 3 5 8 9]
+
+            A lista está agora ordenada.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Algoritmo
+
+            Pseudo-código:
+
+            PARA i = 1 até n-1
+
+                chave = array[i]
+
+                j = i - 1
+
+                ENQUANTO j >= 0 E array[j] > chave
+
+                    array[j+1] = array[j]
+
+                    j = j - 1
+
+                array[j+1] = chave
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Complexidade
+
+            Melhor caso (já ordenado):
+
+            O(n)
+
+            Pior caso (ordem inversa):
+
+            O(n^2)
+
+            Caso médio:
+
+            O(n^2)
+
+            A Ordenação por Inserção é eficiente para **listas pequenas**.
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Características
+
+            Vantagens:
+
+            - Simples de compreender
+            - Fácil de implementar
+            - Eficiente para listas pequenas
+            - Ordenação estável
+
+            Desvantagens:
+
+            - Lento para listas grandes
+            - Muitas comparações e deslocamentos
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Visualização
+
+            mermaid
+            graph LR;
+              A[8] --> B[3];
+              B --> C[5];
+              C --> D[2];
+              D --> E[9];
+
+              A --> S1[Inserir 3];
+              S1 --> S2[Inserir 5];
+              S2 --> S3[Inserir 2];
+              S3 --> S4[Inserir 9];
+            /mermaid
+
+            Cada elemento é inserido na parte ordenada.
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercício: Implementar Ordenação por Inserção
+
+            O objetivo deste exercício é implementar o algoritmo de **Ordenação por Inserção** em Python.
+
+            A Ordenação por Inserção funciona da seguinte forma:
+
+            - Começa no segundo elemento
+            - Compara com os elementos anteriores
+            - Desloca os elementos maiores para a direita
+            - Insere o elemento na posição correta
+
+
+            Exemplo de entrada:
+
+            8 3 5 2 9
+
+            Resultado esperado:
+
+            2 3 5 8 9
+
+
+            ## Passos a Seguir
+
+            ### Passo 1 — Criar a Função
+
+            Criar uma função em Python chamada:
+
+            insertion_sort(arr)
+
+            A função deve:
+
+            - Receber uma lista de números
+            - Ordenar a lista usando ordenação por inserção
+            - Devolver a lista ordenada
+
+
+            ### Passo 2 — Percorrer a Lista
+
+            A ordenação começa no índice **1**.
+
+            Para cada elemento:
+
+            - Guardar o valor atual numa variável chamada **chave**
+            - Comparar com os elementos anteriores
+
+            Pseudo-lógica:
+
+            PARA i de 1 até tamanho-1
+
+                chave = arr[i]
+
+
+            ### Passo 3 — Deslocar Elementos
+
+            Enquanto os elementos anteriores forem maiores que **chave**:
+
+            - Deslocar os elementos uma posição para a direita
+
+            Pseudo-lógica:
+
+            ENQUANTO j >= 0 E arr[j] > chave
+
+                arr[j+1] = arr[j]
+
+                j = j - 1
+
+
+            ### Passo 4 — Inserir o Elemento
+
+            Depois de deslocar os elementos:
+
+            Inserir a chave na posição correta.
+
+            Pseudo-lógica:
+
+            arr[j+1] = chave
+
+
+            ### Passo 5 — Testar o Programa
+
+            Testar a função com diferentes listas.
+
+
+            Exemplo 1:
+
+            [5,4,3,2,1]
+
+            Resultado esperado:
+
+            [1,2,3,4,5]
+
+
+            Exemplo 2:
+
+            [1,2,3,4]
+
+            Resultado esperado:
+
+            [1,2,3,4]
+
+
+            Exemplo 3:
+
+            [7,2,9,1]
+
+            Resultado esperado:
+
+            [1,2,7,9]
+
+
+            ## Visualização
+
+            mermaid
+            graph LR;
+              A[8] --> B[3];
+              B --> C[5];
+              C --> D[2];
+              D --> E[9];
+              E --> F[Lista Ordenada];
+            /mermaid
+
+            spoiler
+            for i in range(1, len(arr)):
+
+                chave = arr[i]
+                j = i - 1
+
+                while j >= 0 and arr[j] > chave:
+                    arr[j + 1] = arr[j]
+                    j -= 1
+
+                arr[j + 1] = chave
+
+            return arr
+
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
