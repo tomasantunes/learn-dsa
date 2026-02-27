@@ -227,26 +227,6 @@
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Characteristics
-
-            Advantages:
-
-            - Simple to understand
-            - Easy to implement
-            - Works well for small arrays
-            - Stable sort
-
-            Disadvantages:
-
-            - Slow for large datasets
-            - Many comparisons and shifts
-            </script>
-          </div>
-        </div>
-
-        <div class="slide active">
-          <div class="slide-content markdown">
-            <script type="text/markdown">
             # Visualization
 
             mermaid
@@ -393,8 +373,7 @@
             ## Solution
 
             spoiler
-            Python solution:
-
+            ```
             def insertion_sort(arr):
               for i in range(1, len(arr)):
 
@@ -409,8 +388,6 @@
 
               return arr
 
-            Example usage
-
             numbers = [8, 3, 5, 2, 9]
             sorted_numbers = insertion_sort(numbers)
 
@@ -420,6 +397,7 @@
             sorted_numbers = insertion_sort(numbers)
 
             print(sorted_numbers)
+            ```
 
             /spoiler
             </script>
