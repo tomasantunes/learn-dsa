@@ -53,4 +53,8 @@ router.get('/en/insertion-sort', function(req, res, next) {
   res.render('content/en/insertion-sort');
 });
 
+router.get('/en/merge-sort', function(req, res, next) {
+  res.render('content/en/merge-sort');
+});
+
 module.exports = router;
