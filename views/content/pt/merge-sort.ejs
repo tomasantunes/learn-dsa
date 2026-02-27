@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Merge Sort</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 1 — Visão Geral do Merge Sort
+
+            O Merge Sort é um algoritmo de ordenação de **dividir e conquistar**.
+
+            Funciona assim:
+
+            1. Divide a lista em partes menores
+            2. Ordena cada parte
+            3. Junta as partes ordenadas
+
+            Exemplo:
+
+            8 3 5 2 9 1 6
+
+            ####T(n) = 2T(n/2) + n####
+
+            mermaid
+            graph TD;
+              A[Lista]
+              A-->B[Dividir]
+              A-->C[Dividir]
+              B-->D[Juntar]
+              C-->D;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 2 — Passo de Divisão
+
+            O Merge Sort começa por **dividir a lista em duas metades**.
+
+            Exemplo:
+
+            8 3 5 2 9 1 6 4
+
+            Transforma-se em:
+
+            8 3 5 2  
+            9 1 6 4
+
+            ####n → n/2 + n/2####
+
+            mermaid
+            graph TD;
+              A[8 3 5 2 9 1 6 4]
+              A-->B[8 3 5 2]
+              A-->C[9 1 6 4];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 3 — Divisão Recursiva
+
+            Cada metade é dividida novamente.
+
+            8 3 5 2 torna-se:
+
+            8 3  
+            5 2
+
+            ####log_2(n) níveis####
+
+            mermaid
+            graph TD;
+              A[8 3 5 2]
+              A-->B[8 3]
+              A-->C[5 2];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 4 — Caso Base
+
+            A divisão continua até as listas terem **apenas um elemento**.
+
+            Listas com um elemento já estão ordenadas.
+
+            Exemplo:
+
+            8  
+            3  
+            5  
+            2
+
+            ####T(1) = 1####
+
+            mermaid
+            graph TD;
+              A[8 3]
+              A-->B[8]
+              A-->C[3];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 5 — Ideia da Junção
+
+            As listas ordenadas são **juntadas (merge)**.
+
+            Exemplo:
+
+            3 8  
+            2 5
+
+            Depois da junção:
+
+            2 3 5 8
+
+            ####n comparações por nível####
+
+            mermaid
+            graph TD;
+              A[3 8]
+              B[2 5]
+              A-->C[Juntar]
+              B-->C
+              C-->D[2 3 5 8];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 6 — Comparação de Elementos
+
+            Durante a junção:
+
+            - Compara-se o primeiro elemento
+            - Move-se o menor elemento
+            - Continua-se até terminar
+
+            Exemplo:
+
+            3 8  
+            2 5
+
+            Resultado:
+
+            2 → 3 → 5 → 8
+
+            ####O(n) custo da junção####
+
+            mermaid
+            graph TD;
+              A[3]
+              B[2]
+              A-->C[Comparar]
+              B-->C
+              C-->D[2 primeiro];
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 7 — Processo Completo
+
+            Exemplo:
+
+            8 3 5 2
+
+            Divisão:
+
+            8 3 | 5 2
+
+            Metades ordenadas:
+
+            3 8 | 2 5
+
+            Junção final:
+
+            2 3 5 8
+
+            ####Total de níveis = log_2(n)####
+
+            mermaid
+            graph TD;
+              A[8 3 5 2]
+              A-->B[8 3]
+              A-->C[5 2]
+              B-->D[3 8]
+              C-->E[2 5]
+              D-->F[2 3 5 8]
+              E-->F;
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 8 — Complexidade Temporal
+
+            O Merge Sort executa sempre em:
+
+            ####O(n log n)####
+
+            Porque:
+
+            - Existem ####log_2(n)#### níveis
+            - Cada nível processa ####n#### elementos
+
+            ####n × log_2(n)####
+
+            mermaid
+            graph TD;
+              A[n]
+              A-->B[n]
+              A-->C[n]
+              B-->D[n]
+              C-->E[n];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 9 — Vantagens e Desvantagens
+
+            Vantagens:
+
+            - Muito rápido para listas grandes
+            - Complexidade ####O(n log n)####
+            - Algoritmo estável
+
+            Desvantagens:
+
+            - Requer memória extra
+            - Mais complexo que algoritmos simples
+
+            ####Espaço = O(n)####
+
+            mermaid
+            graph TD;
+              A[Merge Sort]
+              A-->B[Rápido]
+              A-->C[Estável]
+              A-->D[Memória Extra];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 10 — Algoritmo Merge Sort
+
+            Pseudocódigo:
+
+            1. Dividir a lista
+            2. Ordenar a metade esquerda
+            3. Ordenar a metade direita
+            4. Juntar as metades
+
+            ####MergeSort(n) = Merge(MergeSort(esq), MergeSort(dir))####
+
+            mermaid
+            graph TD;
+              A[Início]
+              A-->B[Dividir]
+              B-->C[Ordenar Esquerda]
+              B-->D[Ordenar Direita]
+              C-->E[Juntar]
+              D-->E
+              E-->F[Lista Ordenada];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercício — Implementar Merge Sort
+
+            Neste exercício vais implementar o algoritmo **Merge Sort**.
+
+            O Merge Sort usa a técnica **dividir e conquistar**:
+
+            1. Divide a lista em duas metades
+            2. Ordena cada metade recursivamente
+            3. Junta as metades ordenadas numa única lista ordenada
+
+            Exemplo de entrada:
+
+            8 3 5 2 9 1 6
+
+            Resultado esperado:
+
+            1 2 3 5 6 8 9
+
+            Passos a implementar:
+
+            1. Criar uma função `merge_sort(lista)`
+            2. Se a lista tiver **um elemento ou menos**, devolver a lista
+            3. Dividir a lista em duas metades
+            4. Chamar `merge_sort()` para cada metade
+            5. Criar uma função `merge(esquerda, direita)`
+            6. Comparar os elementos das duas listas
+            7. Construir uma nova lista ordenada
+            8. Devolver a lista resultante
+
+            ####T(n) = 2T(n/2) + n####
+
+            mermaid
+            graph TD;
+              A[Lista Não Ordenada]
+              A-->B[Dividir]
+              A-->C[Dividir]
+              B-->D[Juntar]
+              C-->D;
+            /mermaid
+
+            spoiler
+            ```
+            def merge(left, right):
+                result = []
+                i = 0
+                j = 0
+
+                while i < len(left) and j < len(right):
+                    if left[i] <= right[j]:
+                        result.append(left[i])
+                        i += 1
+                    else:
+                        result.append(right[j])
+                        j += 1
+
+                while i < len(left):
+                    result.append(left[i])
+                    i += 1
+
+                while j < len(right):
+                    result.append(right[j])
+                    j += 1
+
+                return result
+
+            def merge_sort(arr):
+                if len(arr) <= 1:
+                    return arr
+
+                middle = len(arr) // 2
+                left = arr[:middle]
+                right = arr[middle:]
+
+                left_sorted = merge_sort(left)
+                right_sorted = merge_sort(right)
+
+                return merge(left_sorted, right_sorted)
+
+            numbers = [8, 3, 5, 2, 9, 1, 6]
+            sorted_numbers = merge_sort(numbers)
+            print(sorted_numbers)
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
