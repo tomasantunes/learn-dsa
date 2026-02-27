@@ -57,4 +57,8 @@ router.get('/en/merge-sort', function(req, res, next) {
   res.render('content/en/merge-sort');
 });
 
+router.get('/en/heap-sort', function(req, res, next) {
+  res.render('content/en/heap-sort');
+});
+
 module.exports = router;
