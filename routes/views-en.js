@@ -61,4 +61,8 @@ router.get('/en/heap-sort', function(req, res, next) {
   res.render('content/en/heap-sort');
 });
 
+router.get('/en/quick-sort', function(req, res, next) {
+  res.render('content/en/quick-sort');
+});
+
 module.exports = router;

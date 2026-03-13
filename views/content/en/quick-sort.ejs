@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Quick Sort</h3>
+        </div>
+        
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 1 — What is Quick Sort?
+
+            Quick Sort is a **divide-and-conquer sorting algorithm**.
+
+            It works by:
+
+            1. Selecting a **pivot** element
+            2. **Partitioning** the array into two groups  
+              - Elements **less than** the pivot  
+              - Elements **greater than** the pivot
+            3. Recursively applying the same process.
+
+            Example array:
+
+            `[9, 3, 7, 1, 6, 2]`
+
+            mermaid
+            graph TD;
+              A[Unsorted Array]-->B[Choose Pivot];
+              B-->C[Partition Array];
+              C-->D[Recursively Sort Left];
+              C-->E[Recursively Sort Right];
+              D-->F[Sorted Array];
+              E-->F;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 2 — Divide and Conquer
+
+            Quick Sort follows the **divide-and-conquer paradigm**.
+
+            Steps:
+
+            1. **Divide** the array into two partitions
+            2. **Conquer** by recursively sorting the partitions
+            3. **Combine** (no explicit merge needed)
+
+            Unlike merge sort, Quick Sort sorts **in place**.
+
+            mermaid
+            graph TD;
+              A[Array]-->B[Left Partition];
+              A-->C[Right Partition];
+              B-->D[Sorted Left];
+              C-->E[Sorted Right];
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 3 — Choosing a Pivot
+
+            The **pivot** is the element used to divide the array.
+
+            Common pivot choices:
+
+            - First element
+            - Last element
+            - Middle element
+            - Random element
+
+            Example:
+
+            `[9, 3, 7, 1, 6, 2]`
+
+            Choose pivot = **7**
+
+            Partition result:
+
+            `[3,1,6,2] 7 [9]`
+
+            mermaid
+            graph TD;
+              A[Array]-->B[Choose Pivot 7];
+              B-->C[Elements < 7];
+              B-->D[Elements > 7];
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 4 — Partitioning
+
+            Partitioning rearranges elements so that:
+
+            - Left side < pivot
+            - Right side > pivot
+
+            Example:
+
+            `[9, 3, 7, 1, 6, 2]`
+
+            Pivot = 7
+
+            After partition:
+
+            `[3,1,6,2] 7 [9]`
+
+            mermaid
+            graph TD;
+              A[9 3 7 1 6 2]-->B[Partition];
+              B-->C[3 1 6 2];
+              B-->D[7];
+              B-->E[9];
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 5 — Recursive Sorting
+
+            Quick Sort **recursively sorts** the two partitions.
+
+            Example:
+
+            `[3,1,6,2] 7 [9]`
+
+            Sort left partition:
+
+            `[3,1,6,2]`
+
+            Sort right partition:
+
+            `[9]`
+
+            mermaid
+            graph TD;
+              A[3 1 6 2]-->B[Choose Pivot];
+              B-->C[Partition];
+              C-->D[Recursive Calls];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 6 — Base Case
+
+            Recursion stops when:
+
+            - The array has **0 or 1 element**
+
+            These arrays are already sorted.
+
+            Example:
+
+            `[9]`
+
+            No further work needed.
+
+            mermaid
+            graph TD;
+              A[Single Element]-->B[Already Sorted];
+            /mermaid
+            </script>
+
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 7 — Quick Sort Pseudocode
+
+            Simplified pseudocode:
+
+            ```
+            quickSort(arr):
+              if length(arr) <= 1
+              return arr
+
+              pivot = choosePivot(arr)
+
+              left = elements < pivot
+              right = elements > pivot
+
+              return quickSort(left) + pivot + quickSort(right)
+            ```
+
+            mermaid
+            graph TD;
+              A[quickSort]-->B[Choose Pivot];
+              B-->C[Partition];
+              C-->D[Sort Left];
+              C-->E[Sort Right];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 8 — Time Complexity
+
+            Quick Sort has different time complexities:
+
+            Best case:
+
+            ####O(n log n)####
+
+            Average case:
+
+            ####O(n log n)####
+
+            Worst case:
+
+            ####O(n^2)####
+
+            Worst case occurs when partitions are very **unbalanced**.
+
+            mermaid
+            graph TD;
+              A[Balanced Partition]-->B[O n log n];
+              C[Unbalanced Partition]-->D[O n^2];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 9 — Advantages of Quick Sort
+
+            Advantages:
+
+            - Very **fast in practice**
+            - **In-place sorting**
+            - Excellent **cache performance**
+            - Widely used in real systems
+
+            Many programming languages use Quick Sort internally.
+
+            mermaid
+            graph TD;
+              A[Quick Sort]-->B[Fast];
+              A-->C[In-place];
+              A-->D[Efficient];
+            /mermaid
+            </script>
+
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 10 — Summary
+
+            Quick Sort algorithm:
+
+            1. Choose a **pivot**
+            2. **Partition** the array
+            3. **Recursively sort** partitions
+            4. Stop when partitions have **1 element**
+
+            Final example:
+
+            `[9,3,7,1,6,2]`
+
+            Sorted result:
+
+            `[1,2,3,6,7,9]`
+
+            mermaid
+            graph TD;
+              A[Unsorted]-->B[Partition];
+              B-->C[Recursive Sorting];
+              C-->D[Sorted Array];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercise — Implement Quick Sort
+
+            In this exercise you will implement the **Quick Sort algorithm**.
+
+            Quick Sort is a **divide-and-conquer algorithm** that sorts an array by:
+
+            1. Choosing a **pivot**
+            2. **Partitioning** the array
+            3. Recursively sorting the partitions
+
+            Your goal is to write a Python function:
+
+            quick_sort(arr)
+
+            that returns the sorted array.
+
+            Example input:
+
+            `[9, 3, 7, 1, 6, 2]`
+
+            Expected output:
+
+            `[1, 2, 3, 6, 7, 9]`
+
+            ---
+
+            ## Steps to Implement Quick Sort
+
+            Follow these steps:
+
+            1. **Define the base case**
+
+            If the array length is **0 or 1**, it is already sorted.
+
+            2. **Choose a pivot**
+
+            Select one element of the array as the pivot.  
+            For this exercise, use the **last element**.
+
+            3. **Partition the array**
+
+            Create two lists:
+
+            - elements **less than or equal to** the pivot
+            - elements **greater than** the pivot
+
+            4. **Recursively sort the partitions**
+
+            Call quick sort on both partitions.
+
+            5. **Combine the results**
+
+            Concatenate:
+
+            left + pivot + right
+
+            ---
+
+            ## Algorithm Visualization
+
+            mermaid
+            graph TD;
+              A[Array]-->B[Choose Pivot];
+              B-->C[Partition Array];
+              C-->D[Left Subarray];
+              C-->E[Right Subarray];
+              D-->F[Recursive Sort];
+              E-->G[Recursive Sort];
+              F-->H[Sorted Array];
+              G-->H;
+            /mermaid
+
+            ---
+
+            ## Your Task
+
+            Implement the function:
+
+            quick_sort(arr)
+
+            Requirements:
+
+            - Use **recursion**
+            - Use **list comprehensions** if possible
+            - Return a **new sorted list**
+
+            Test your implementation with different arrays.
+
+            ---
+
+            spoiler
+            ```
+            def quick_sort(arr):
+                if len(arr) <= 1:
+                    return arr
+
+                # Choose pivot
+                pivot = arr[-1]
+
+                # Partition
+                left = [x for x in arr[:-1] if x <= pivot]
+                right = [x for x in arr[:-1] if x > pivot]
+
+                # Recursive sorting
+                return quick_sort(left) + [pivot] + quick_sort(right)
+
+            /spoiler
+            ```
+            </script>
+          </div>
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
