@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Binary Trees</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 1: What is a Binary Tree?
+
+            A **binary tree** is a hierarchical data structure where:
+
+            - Each node has **at most two children**
+            - These children are called:
+              - **Left child**
+              - **Right child**
+
+            ####N_{children} \leq 2####
+
+            mermaid
+            graph TD;
+              A[Root]-->B[Left];
+              A-->C[Right];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 2: Basic Terminology
+
+            Important terms:
+
+            - **Root**: Top node
+            - **Leaf**: Node with no children
+            - **Parent / Child**
+            - **Subtree**
+
+            ####Leaf = node\ with\ 0\ children####
+
+            mermaid
+            graph TD;
+              A[Root]-->B;
+              A-->C;
+              B-->D[Leaf];
+              B-->E[Leaf];
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Slide 3: Structure of a Node
+
+            Each node typically contains:
+
+            - A **value**
+            - A reference to:
+              - **left child**
+              - **right child**
+
+            ####Node = (value, left, right)####
+
+            mermaid
+            graph TD;
+              A[Node]-->B[Left pointer];
+              A-->C[Right pointer];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Slide 4: Types of Binary Trees
+
+            Common types:
+
+            - **Full Binary Tree**: Every node has 0 or 2 children
+            - **Complete Binary Tree**: Filled left to right
+            - **Perfect Binary Tree**: All levels fully filled
+
+            ####Nodes_{perfect} = 2^h - 1####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+              C-->F;
+              C-->G;
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 5: Height of a Binary Tree
+
+            - Height = longest path from root to leaf
+
+            ####h = max(depth\ of\ leaves)####
+
+            mermaid
+            graph TD;
+              A-->B;
+              B-->C;
+              C-->D;
+              D-->E;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 6: Tree Traversals
+
+            Ways to visit nodes:
+
+            - **Inorder** (Left, Root, Right)
+            - **Preorder** (Root, Left, Right)
+            - **Postorder** (Left, Right, Root)
+
+            ####Traversal = visiting\ all\ nodes####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 7: Inorder Traversal Example
+
+            Steps:
+
+            1. Visit left subtree
+            2. Visit root
+            3. Visit right subtree
+
+            ####Inorder: L \rightarrow Root \rightarrow R####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 8: Binary Tree vs Binary Search Tree
+
+            Binary Tree:
+            - No ordering rules
+
+            Binary Search Tree (BST):
+            - Left < Root < Right
+
+            ####Left < Root < Right####
+
+            mermaid
+            graph TD;
+              A[10]-->B[5];
+              A-->C[15];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 9: Applications of Binary Trees
+
+            Used in:
+
+            - Expression parsing
+            - File systems
+            - Databases
+            - AI (decision trees)
+
+            ####Tree \rightarrow hierarchical\ data####
+
+            mermaid
+            graph TD;
+              A[Decision]-->B[Yes];
+              A-->C[No];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 10: Advantages and Limitations
+
+            Advantages:
+            - Efficient searching (in BST)
+            - Natural hierarchy
+
+            Limitations:
+            - Can become unbalanced
+            - Worst-case operations: O(n)
+
+            ####Best = O(\log n),\ Worst = O(n)####
+
+            mermaid
+            graph TD;
+              A-->B;
+              B-->C;
+              C-->D;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercise: Implement a Binary Tree
+
+            In this exercise, you will implement a **binary tree data structure** from scratch.
+
+            ### Your goals:
+
+            1. Create a **Node class**
+            2. Create a **BinaryTree class**
+            3. Implement:
+              - Insertion (level-order)
+              - Inorder traversal
+              - Preorder traversal
+              - Postorder traversal
+
+            ####Node = (value, left, right)####
+
+            mermaid
+            graph TD;
+              A[10]-->B[5];
+              A-->C[15];
+              B-->D[3];
+              B-->E[7];
+            /mermaid
+
+            ---
+
+            ### Step-by-step Instructions
+
+            **Step 1 — Create the Node class**
+            - Each node should store:
+              - value
+              - left child
+              - right child
+
+            **Step 2 — Create the BinaryTree class**
+            - Store the **root node**
+
+            **Step 3 — Implement insertion**
+            - Insert nodes using **level-order (BFS)**
+            - Fill the tree from left to right
+
+            **Step 4 — Implement traversals**
+            - Inorder → Left, Root, Right
+            - Preorder → Root, Left, Right
+            - Postorder → Left, Right, Root
+
+            ####Traversal = visiting\ all\ nodes####
+
+            ---
+
+            ### Expected Example
+
+            If you insert:
+
+            10, 5, 15, 3, 7
+
+            You should get:
+
+            - Inorder: 3, 5, 7, 10, 15
+            - Preorder: 10, 5, 3, 7, 15
+            - Postorder: 3, 7, 5, 15, 10
+
+            ---
+
+            spoiler
+
+            ```
+            from collections import deque
+
+            class Node:
+                def __init__(self, value):
+                    self.value = value
+                    self.left = None
+                    self.right = None
+
+
+            class BinaryTree:
+                def __init__(self):
+                    self.root = None
+
+                def insert(self, value):
+                    new_node = Node(value)
+
+                    if not self.root:
+                        self.root = new_node
+                        return
+
+                    queue = deque([self.root])
+
+                    while queue:
+                        current = queue.popleft()
+
+                        if not current.left:
+                            current.left = new_node
+                            return
+                        else:
+                            queue.append(current.left)
+
+                        if not current.right:
+                            current.right = new_node
+                            return
+                        else:
+                            queue.append(current.right)
+
+                def inorder(self, node):
+                    if not node:
+                        return []
+                    return self.inorder(node.left) + [node.value] + self.inorder(node.right)
+
+                def preorder(self, node):
+                    if not node:
+                        return []
+                    return [node.value] + self.preorder(node.left) + self.preorder(node.right)
+
+                def postorder(self, node):
+                    if not node:
+                        return []
+                    return self.postorder(node.left) + self.postorder(node.right) + [node.value]
+
+
+            # Example usage
+            tree = BinaryTree()
+            values = [10, 5, 15, 3, 7]
+
+            for v in values:
+                tree.insert(v)
+
+            print("Inorder:", tree.inorder(tree.root))
+            print("Preorder:", tree.preorder(tree.root))
+            print("Postorder:", tree.postorder(tree.root))
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
