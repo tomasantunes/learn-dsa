@@ -65,4 +65,8 @@ router.get('/en/quick-sort', function(req, res, next) {
   res.render('content/en/quick-sort');
 });
 
+router.get('/en/trees', function(req, res, next) {
+  res.render('content/en/trees');
+});
+
 module.exports = router;

@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Introdução às Árvores</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # O que é uma Árvore?
+
+            Uma **árvore** é uma estrutura de dados hierárquica composta por nós.
+
+            - Um nó é designado como a **raiz**
+            - Cada nó pode ter **filhos**
+            - Os nós estão ligados por **arestas**
+
+            ####n - 1 arestas para n nós####
+
+            mermaid
+            graph TD;
+              A[Raiz] --> B[Filho 1];
+              A --> C[Filho 2];
+              B --> D[Neto];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Terminologia Essencial
+
+            Para compreender árvores, é importante conhecer os termos:
+
+            - **Raiz**: Nó no topo da árvore
+            - **Folha**: Nó sem filhos
+            - **Pai / Filho**: Relação entre nós
+            - **Subárvore**: Uma árvore dentro de outra
+
+            ####altura = maior caminho da raiz até uma folha####
+
+            mermaid
+            graph TD;
+              A[Raiz] --> B;
+              A --> C;
+              B --> D[Folha];
+              C --> E[Folha];
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Propriedades das Árvores
+
+            As árvores têm propriedades importantes:
+
+            - Não têm ciclos (são acíclicas)
+            - Existe exatamente um caminho entre quaisquer dois nós
+            - Estrutura conectada
+
+            ####arestas = nós - 1####
+
+            mermaid
+            graph TD;
+              A --> B;
+              A --> C;
+              B --> D;
+              C --> E;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Tipos de Árvores
+
+            Existem vários tipos de árvores:
+
+            - **Árvore Binária**: Máximo de 2 filhos por nó
+            - **Árvore Binária de Pesquisa (BST)**: Estrutura ordenada
+            - **Árvores Balanceadas**: Altura minimizada
+            - **Heap**: Estrutura usada em filas de prioridade
+
+            ####esquerda < raiz < direita####
+
+            mermaid
+            graph TD;
+              A[10] --> B[5];
+              A --> C[15];
+              B --> D[2];
+              B --> E[7];
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Porquê Utilizar Árvores?
+
+            As árvores são úteis para:
+
+            - Representar dados hierárquicos (ex: sistemas de ficheiros)
+            - Pesquisa e ordenação eficientes
+            - Inserção e remoção eficientes
+
+            ####O(log n) em média####
+
+            mermaid
+            graph TD;
+              A[Raiz] --> B[Pasta];
+              B --> C[Ficheiro1];
+              B --> D[Ficheiro2];
+              A --> E[Pasta2];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
