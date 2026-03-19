@@ -73,4 +73,8 @@ router.get('/en/binary-trees', function(req, res, next) {
   res.render('content/en/binary-trees');
 });
 
+router.get('/en/binary-search-trees', function(req, res, next) {
+  res.render('content/en/binary-search-trees');
+});
+
 module.exports = router;

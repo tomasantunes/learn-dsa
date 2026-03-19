@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Árvore Binária de Pesquisa (BST)</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Árvore Binária de Pesquisa (BST) - Introdução
+
+            Uma **Árvore Binária de Pesquisa (BST)** é um tipo especial de árvore binária com uma propriedade de ordenação:
+
+            - Cada nó tem no máximo **dois filhos**
+            - O filho esquerdo contém **valores menores**
+            - O filho direito contém **valores maiores**
+
+            ####Esquerda < Raiz < Direita####
+
+            mermaid
+            graph TD;
+              8-->3;
+              8-->10;
+              3-->1;
+              3-->6;
+              10-->14;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Propriedade da BST
+
+            Para cada nó numa BST:
+
+            - Todos os valores na **subárvore esquerda** são menores
+            - Todos os valores na **subárvore direita** são maiores
+            - Esta regra aplica-se **recursivamente**
+
+            ####∀ nó: esquerda < nó < direita####
+
+            mermaid
+            graph TD;
+              5-->2;
+              5-->7;
+              2-->1;
+              2-->3;
+              7-->6;
+              7-->8;
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Pesquisa numa BST
+
+            A pesquisa é eficiente devido à ordenação:
+
+            1. Começar na raiz
+            2. Comparar o valor
+            3. Ir para a esquerda ou direita
+
+            ####Complexidade: O(h)####
+
+            mermaid
+            graph TD;
+              8-->3;
+              8-->10;
+              3-->1;
+              3-->6;
+              6-->4;
+              6-->7;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Inserção numa BST
+
+            Para inserir um valor:
+
+            1. Começar na raiz
+            2. Seguir as regras da BST (esquerda/direita)
+            3. Inserir na posição correta (folha)
+
+            ####Mantém a propriedade da BST####
+
+            mermaid
+            graph TD;
+              8-->3;
+              8-->10;
+              3-->1;
+              3-->6;
+              6-->4;
+              6-->7;
+              10-->14;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+        
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Complexidade da BST
+
+            O desempenho depende da altura da árvore:
+
+            - **Melhor caso (equilibrada):** O(log n)
+            - **Pior caso (degenerada):** O(n)
+
+            ####h ≈ log(n)####
+
+            mermaid
+            graph TD;
+              A-->B;
+              B-->C;
+              C-->D;
+              D-->E;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
