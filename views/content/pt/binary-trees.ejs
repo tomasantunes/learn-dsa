@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Árvores Binárias</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 1: O que é uma Árvore Binária?
+
+            Uma **árvore binária** é uma estrutura de dados hierárquica onde:
+
+            - Cada nó tem **no máximo dois filhos**
+            - Esses filhos são chamados:
+              - **Filho esquerdo**
+              - **Filho direito**
+
+            ####N_{filhos} \leq 2####
+
+            mermaid
+            graph TD;
+              A[Raiz]-->B[Esquerda];
+              A-->C[Direita];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 2: Terminologia Básica
+
+            Termos importantes:
+
+            - **Raiz**: Nó superior
+            - **Folha**: Nó sem filhos
+            - **Pai / Filho**
+            - **Subárvore**
+
+            ####Folha = nó\ com\ 0\ filhos####
+
+            mermaid
+            graph TD;
+              A[Raiz]-->B;
+              A-->C;
+              B-->D[Folha];
+              B-->E[Folha];
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Slide 3: Estrutura de um Nó
+
+            Cada nó contém normalmente:
+
+            - Um **valor**
+            - Referências para:
+              - **filho esquerdo**
+              - **filho direito**
+
+            ####Node = (valor, esquerda, direita)####
+
+            mermaid
+            graph TD;
+              A[Nó]-->B[Apontador esquerdo];
+              A-->C[Apontador direito];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Slide 4: Tipos de Árvores Binárias
+
+            Tipos comuns:
+
+            - **Árvore Binária Completa Estrita (Full)**: cada nó tem 0 ou 2 filhos
+            - **Árvore Binária Completa (Complete)**: preenchida da esquerda para a direita
+            - **Árvore Binária Perfeita (Perfect)**: todos os níveis totalmente preenchidos
+
+            ####Nós_{perfeita} = 2^h - 1####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+              C-->F;
+              C-->G;
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 5: Altura de uma Árvore Binária
+
+            - A altura é o caminho mais longo da raiz até uma folha
+
+            ####h = max(profundidade\ das\ folhas)####
+
+            mermaid
+            graph TD;
+              A-->B;
+              B-->C;
+              C-->D;
+              D-->E;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 6: Percursos na Árvore
+
+            Formas de visitar os nós:
+
+            - **Inorder** (Esquerda, Raiz, Direita)
+            - **Preorder** (Raiz, Esquerda, Direita)
+            - **Postorder** (Esquerda, Direita, Raiz)
+
+            ####Percurso = visitar\ todos\ os\ nós####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 7: Exemplo de Percurso Inorder
+
+            Passos:
+
+            1. Visitar a subárvore esquerda
+            2. Visitar a raiz
+            3. Visitar a subárvore direita
+
+            ####Inorder: E \rightarrow Raiz \rightarrow D####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 8: Árvore Binária vs Árvore de Pesquisa Binária
+
+            Árvore Binária:
+            - Sem regras de ordenação
+
+            Árvore de Pesquisa Binária (BST):
+            - Esquerda < Raiz < Direita
+
+            ####Esquerda < Raiz < Direita####
+
+            mermaid
+            graph TD;
+              A[10]-->B[5];
+              A-->C[15];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 9: Aplicações das Árvores Binárias
+
+            Utilizadas em:
+
+            - Processamento de expressões
+            - Sistemas de ficheiros
+            - Bases de dados
+            - Inteligência artificial (árvores de decisão)
+
+            ####Árvore \rightarrow dados\ hierárquicos####
+
+            mermaid
+            graph TD;
+              A[Decisão]-->B[Sim];
+              A-->C[Não];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Slide 10: Vantagens e Limitações
+
+            Vantagens:
+            - Pesquisa eficiente (em BST)
+            - Representação natural de hierarquias
+
+            Limitações:
+            - Pode ficar desequilibrada
+            - Pior caso: O(n)
+
+            ####Melhor = O(\log n),\ Pior = O(n)####
+
+            mermaid
+            graph TD;
+              A-->B;
+              B-->C;
+              C-->D;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Exercício: Implementar uma Árvore Binária
+
+            Neste exercício, vais implementar uma **estrutura de dados de árvore binária** do zero.
+
+            ### Objetivos:
+
+            1. Criar uma classe **Node (Nó)**
+            2. Criar uma classe **BinaryTree (Árvore Binária)**
+            3. Implementar:
+              - Inserção (por níveis)
+              - Percurso inorder
+              - Percurso preorder
+              - Percurso postorder
+
+            ####Node = (valor, esquerda, direita)####
+
+            mermaid
+            graph TD;
+              A[10]-->B[5];
+              A-->C[15];
+              B-->D[3];
+              B-->E[7];
+            /mermaid
+
+            ---
+
+            ### Passos a seguir
+
+            **Passo 1 — Criar a classe Node**
+            - Cada nó deve armazenar:
+              - valor
+              - filho esquerdo
+              - filho direito
+
+            **Passo 2 — Criar a classe BinaryTree**
+            - Guardar o **nó raiz**
+
+            **Passo 3 — Implementar inserção**
+            - Inserir nós por **níveis (BFS)**
+            - Preencher a árvore da esquerda para a direita
+
+            **Passo 4 — Implementar percursos**
+            - Inorder → Esquerda, Raiz, Direita
+            - Preorder → Raiz, Esquerda, Direita
+            - Postorder → Esquerda, Direita, Raiz
+
+            ####Percurso = visitar\ todos\ os\ nós####
+
+            ---
+
+            ### Exemplo esperado
+
+            Se inserires:
+
+            10, 5, 15, 3, 7
+
+            Deves obter:
+
+            - Inorder: 3, 5, 7, 10, 15
+            - Preorder: 10, 5, 3, 7, 15
+            - Postorder: 3, 7, 5, 15, 10
+
+            ---
+
+            spoiler
+
+            ```
+            from collections import deque
+
+            class Node:
+                def __init__(self, value):
+                    self.value = value
+                    self.left = None
+                    self.right = None
+
+
+            class BinaryTree:
+                def __init__(self):
+                    self.root = None
+
+                def insert(self, value):
+                    new_node = Node(value)
+
+                    if not self.root:
+                        self.root = new_node
+                        return
+
+                    queue = deque([self.root])
+
+                    while queue:
+                        current = queue.popleft()
+
+                        if not current.left:
+                            current.left = new_node
+                            return
+                        else:
+                            queue.append(current.left)
+
+                        if not current.right:
+                            current.right = new_node
+                            return
+                        else:
+                            queue.append(current.right)
+
+                def inorder(self, node):
+                    if not node:
+                        return []
+                    return self.inorder(node.left) + [node.value] + self.inorder(node.right)
+
+                def preorder(self, node):
+                    if not node:
+                        return []
+                    return [node.value] + self.preorder(node.left) + self.preorder(node.right)
+
+                def postorder(self, node):
+                    if not node:
+                        return []
+                    return self.postorder(node.left) + self.postorder(node.right) + [node.value]
+
+
+            # Exemplo de utilização
+            tree = BinaryTree()
+            values = [10, 5, 15, 3, 7]
+
+            for v in values:
+                tree.insert(v)
+
+            print("Inorder:", tree.inorder(tree.root))
+            print("Preorder:", tree.preorder(tree.root))
+            print("Postorder:", tree.postorder(tree.root))
+            ```
+            /spoiler
+            </script>
+          </div>
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
