@@ -71,7 +71,8 @@ pre {
 .progress-container {
   position: fixed;
   bottom: 0;
-  width: 100%;
+  left: 260px;
+  width: calc(100% - 260px);
   height: 6px;
   background: #ddd;
 }
