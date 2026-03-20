@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Post-Order Traversal</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Post-Order Traversal — Introduction
+
+            Post-order traversal is a depth-first traversal technique for trees.
+
+            In this method, we visit nodes in the following order:
+
+            1. Left subtree
+            2. Right subtree
+            3. Root node
+
+            ####Order = Left → Right → Root####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+              C-->F;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Step-by-Step Process
+
+            To perform post-order traversal:
+
+            1. Traverse the left subtree recursively
+            2. Traverse the right subtree recursively
+            3. Visit the current node
+
+            This ensures children are processed before their parent.
+
+            ####T(n) = T(left) + T(right) + 1####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Example Traversal
+
+            Given this tree:
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+              C-->F;
+            /mermaid
+
+            Post-order traversal sequence:
+
+            D → E → B → F → C → A
+
+            ####Result = [D, E, B, F, C, A]####
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Recursive Implementation
+
+            Post-order traversal is naturally implemented using recursion:
+
+            - Call function on left child
+            - Call function on right child
+            - Process the node
+
+            ####visit(node) after children####
+
+            mermaid
+            graph TD;
+              Start-->Left;
+              Left-->Right;
+              Right-->Visit;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Use Cases
+
+            Post-order traversal is useful when:
+
+            - Deleting a tree (children before parent)
+            - Evaluating expression trees
+            - Calculating subtree properties
+
+            ####Useful for bottom-up computation####
+
+            mermaid
+            graph TD;
+              Leaves-->Parent;
+              Parent-->Root;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

@@ -93,4 +93,8 @@ router.get('/en/in-order-traversal', function(req, res, next) {
   res.render('content/en/in-order-traversal');
 });
 
+router.get('/en/post-order-traversal', function(req, res, next) {
+  res.render('content/en/post-order-traversal');
+});
+
 module.exports = router;

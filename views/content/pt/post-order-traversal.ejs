@@ -12,27 +12,30 @@
 
       <main class="flex-fill p-4">
         <div class="text-center">
-          <h3>Percurso Em-Ordem</h3>
+          <h3>Percurso Pós-Ordem</h3>
         </div>
         <div class="slide active">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Percurso Em-Ordem (Visão Geral)
+            # Percurso Pós-Ordem — Introdução
 
-            O percurso em-ordem é uma forma de visitar todos os nós de uma árvore binária.
+            O percurso pós-ordem é uma técnica de travessia em profundidade (depth-first) para árvores.
 
-            A ordem é:
+            Neste método, visitamos os nós pela seguinte ordem:
 
-            1. Visitar a subárvore esquerda  
-            2. Visitar o nó atual  
-            3. Visitar a subárvore direita  
+            1. Subárvore esquerda
+            2. Subárvore direita
+            3. Nó raiz
 
-            ####Esquerda → Raiz → Direita####
+            ####Ordem = Esquerda → Direita → Raiz####
 
             mermaid
             graph TD;
-              Root-->Left;
-              Root-->Right;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+              C-->F;
             /mermaid
             </script>
           </div>
@@ -41,17 +44,17 @@
         <div class="slide">
           <div class="slide-content markdown">
             <script type="text/markdown">
-            # Processo Passo a Passo
+            # Processo Passo-a-Passo
 
-            Para cada nó:
+            Para realizar o percurso pós-ordem:
 
-            1. Percorrer recursivamente o filho esquerdo  
-            2. Processar (visitar) o nó atual  
-            3. Percorrer recursivamente o filho direito  
+            1. Percorrer recursivamente a subárvore esquerda
+            2. Percorrer recursivamente a subárvore direita
+            3. Visitar o nó atual
 
-            Isto continua até todos os nós serem visitados.
+            Isto garante que os filhos são processados antes do pai.
 
-            ####Percurso(nó) = E → N → D####
+            ####T(n) = T(esq) + T(dir) + 1####
 
             mermaid
             graph TD;
@@ -66,11 +69,9 @@
         <div class="slide"> 
           <div class="slide-content markdown"> 
             <script type="text/markdown">
-            # Exemplo de Árvore
+            # Exemplo de Travessia
 
-            Considere a seguinte árvore binária:
-
-            ####InOrder: Esquerda → Raiz → Direita####
+            Dada a seguinte árvore:
 
             mermaid
             graph TD;
@@ -79,10 +80,13 @@
               B-->D;
               B-->E;
               C-->F;
-              C-->G;
             /mermaid
 
-            Começamos pela raiz (A), mas seguimos sempre primeiro para a esquerda.
+            Sequência do percurso pós-ordem:
+
+            D → E → B → F → C → A
+
+            ####Resultado = [D, E, B, F, C, A]####
             </script>
           </div> 
         </div>
@@ -90,27 +94,21 @@
         <div class="slide"> 
           <div class="slide-content markdown"> 
             <script type="text/markdown">
-            # Execução do Percurso
+            # Implementação Recursiva
 
-            Passos:
+            O percurso pós-ordem é naturalmente implementado com recursão:
 
-            1. Ir para a esquerda a partir de A → B → D  
-            2. Visitar D  
-            3. Voltar a B, visitar B  
-            4. Visitar E  
-            5. Voltar a A, visitar A  
-            6. Percorrer a subárvore direita (C → F → G)
+            - Chamar a função no filho esquerdo
+            - Chamar a função no filho direito
+            - Processar o nó
 
-            ####Resultado: D → B → E → A → F → C → G####
+            ####visitar(nó) após os filhos####
 
             mermaid
             graph TD;
-              A-->B;
-              A-->C;
-              B-->D;
-              B-->E;
-              C-->F;
-              C-->G;
+              Start-->Left;
+              Left-->Right;
+              Right-->Visit;
             /mermaid
             </script>
           </div> 
@@ -119,22 +117,20 @@
         <div class="slide"> 
           <div class="slide-content markdown"> 
             <script type="text/markdown">
-            # Propriedades Principais
+            # Casos de Utilização
 
-            - O percurso em-ordem numa Árvore de Pesquisa Binária (BST) devolve valores ordenados  
-            - Pode ser implementado com recursão ou com uma pilha  
-            - Complexidade temporal: O(n)
+            O percurso pós-ordem é útil quando:
 
-            ####BST ⇒ Resultado Ordenado####
+            - Apagar uma árvore (filhos antes do pai)
+            - Avaliar árvores de expressões
+            - Calcular propriedades de subárvores
+
+            ####Útil para computação de baixo para cima####
 
             mermaid
             graph TD;
-              4-->2;
-              4-->6;
-              2-->1;
-              2-->3;
-              6-->5;
-              6-->7;
+              Leaves-->Parent;
+              Parent-->Root;
             /mermaid
             </script>
           </div> 
