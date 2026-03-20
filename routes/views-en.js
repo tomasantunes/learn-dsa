@@ -77,4 +77,8 @@ router.get('/en/binary-search-trees', function(req, res, next) {
   res.render('content/en/binary-search-trees');
 });
 
+router.get('/en/avl-tree', function(req, res, next) {
+  res.render('content/en/avl-tree');
+});
+
 module.exports = router;

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Árvore AVL</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # O que é uma Árvore AVL?
+
+            Uma **Árvore AVL** é uma Árvore Binária de Pesquisa (BST) auto-balanceada.
+
+            - Nomeada em homenagem a **Adelson-Velsky e Landis**
+            - Mantém o equilíbrio automaticamente após inserções e remoções
+            - Garante operações eficientes
+
+            ####Fator de Equilíbrio = altura(esquerda) - altura(direita)####
+
+            mermaid
+            graph TD;
+              30-->20;
+              30-->40;
+              20-->10;
+              20-->25;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Fator de Equilíbrio
+
+            Cada nó tem um **fator de equilíbrio (FE)**:
+
+            ####FE = altura(subárvore esquerda) - altura(subárvore direita)####
+
+            Condição de uma Árvore AVL:
+            - FE deve ser **-1, 0 ou 1**
+
+            Se FE estiver fora deste intervalo → a árvore fica desequilibrada
+
+            mermaid
+            graph TD;
+              A[FE = 0]-->B[Equilibrada];
+              C[FE = 2]-->D[Desequilibrada];
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Rotações em Árvores AVL
+
+            Para restaurar o equilíbrio, as Árvores AVL usam **rotações**:
+
+            - Rotação à esquerda
+            - Rotação à direita
+            - Rotação esquerda-direita
+            - Rotação direita-esquerda
+
+            Estas operações mantêm a propriedade de BST
+
+            mermaid
+            graph TD;
+              A[Desequilibrada]-->B[Rotação];
+              B-->C[Equilibrada];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Exemplo: Rotação à Direita
+
+            Usada quando a árvore está **pesada à esquerda**
+
+            Passos:
+            1. Promover o filho esquerdo
+            2. Descer o nó atual para filho direito
+
+            ####NovaRaiz = FilhoEsquerdo####
+
+            mermaid
+            graph TD;
+              A[30]-->B[20];
+              B-->C[10];
+              A-->D[40];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Complexidade da Árvore AVL
+
+            As Árvores AVL garantem:
+
+            - Pesquisa: **O(log n)**
+            - Inserção: **O(log n)**
+            - Remoção: **O(log n)**
+
+            Porque a árvore permanece equilibrada
+
+            ####Altura ≈ log(n)####
+
+            mermaid
+            graph TD;
+              A[Árvore Equilibrada]-->B[Operações Rápidas];
+              B-->C[O(log n)];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

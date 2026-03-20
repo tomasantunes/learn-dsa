@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>AVL Tree</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # What is an AVL Tree?
+
+            An **AVL Tree** is a self-balancing Binary Search Tree (BST).
+
+            - Named after **Adelson-Velsky and Landis**
+            - Maintains balance automatically after insertions and deletions
+            - Ensures efficient operations
+
+            ####Balance Factor = height(left) - height(right)####
+
+            mermaid
+            graph TD;
+              30-->20;
+              30-->40;
+              20-->10;
+              20-->25;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Balance Factor
+
+            Each node has a **balance factor (BF)**:
+
+            ####BF = height(left subtree) - height(right subtree)####
+
+            AVL Tree condition:
+            - BF must be **-1, 0, or 1**
+
+            If BF is outside this range → tree becomes unbalanced
+
+            mermaid
+            graph TD;
+              A[BF = 0]-->B[Balanced];
+              C[BF = 2]-->D[Unbalanced];
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Rotations in AVL Trees
+
+            To restore balance, AVL Trees use **rotations**:
+
+            - Left Rotation
+            - Right Rotation
+            - Left-Right Rotation
+            - Right-Left Rotation
+
+            These operations keep the BST property intact
+
+            mermaid
+            graph TD;
+              A[Unbalanced]-->B[Rotation];
+              B-->C[Balanced];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Example: Right Rotation
+
+            Used when tree is **left-heavy**
+
+            Steps:
+            1. Promote left child
+            2. Demote current node to right child
+
+            ####NewRoot = LeftChild####
+
+            mermaid
+            graph TD;
+              A[30]-->B[20];
+              B-->C[10];
+              A-->D[40];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # AVL Tree Complexity
+
+            AVL Trees guarantee:
+
+            - Search: **O(log n)**
+            - Insert: **O(log n)**
+            - Delete: **O(log n)**
+
+            Because the tree remains balanced
+
+            ####Height ≈ log(n)####
+
+            mermaid
+            graph TD;
+              A[Balanced Tree]-->B[Fast Operations];
+              B-->C[O(log n)];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
