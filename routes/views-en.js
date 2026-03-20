@@ -81,4 +81,8 @@ router.get('/en/avl-tree', function(req, res, next) {
   res.render('content/en/avl-tree');
 });
 
+router.get('/en/red-black-tree', function(req, res, next) {
+  res.render('content/en/red-black-tree');
+});
+
 module.exports = router;

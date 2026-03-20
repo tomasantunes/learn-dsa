@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Red-Black Trees</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Red-Black Trees — Introduction
+
+            A **Red-Black Tree** is a self-balancing Binary Search Tree.
+
+            It ensures that the tree remains approximately balanced, so operations are efficient.
+
+            ### Key Operations
+            - Search
+            - Insert
+            - Delete
+
+            ####Time Complexity####
+            ####O(log n)####
+
+            mermaid
+            graph TD;
+              A[10] --> B[5];
+              A --> C[15];
+              B --> D[3];
+              B --> E[7];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Properties of Red-Black Trees
+
+            A Red-Black Tree follows these rules:
+
+            1. Each node is either **red** or **black**
+            2. The root is always **black**
+            3. No two red nodes can be adjacent
+            4. Every path from root to leaf has the same number of black nodes
+
+            ####Balanced Height####
+            ####h <= 2 * log(n + 1)####
+
+            mermaid
+            graph TD;
+              A[Black] --> B[Red];
+              A --> C[Red];
+              B --> D[Black];
+              C --> E[Black];
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Node Structure
+
+            Each node stores:
+
+            - Value (key)
+            - Color (Red or Black)
+            - Left and Right children
+            - Parent reference
+
+            ####Node Representation####
+            ####Node = (key, color, left, right, parent)####
+
+            mermaid
+            graph TD;
+              A[Node] --> B[Key];
+              A --> C[Color];
+              A --> D[Left];
+              A --> E[Right];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Insertion in Red-Black Trees
+
+            Steps:
+            1. Insert node like a BST (as red)
+            2. Fix violations of Red-Black properties
+            3. Use:
+              - Recoloring
+              - Rotations (left/right)
+
+            ####Goal####
+            ####Maintain balance and properties####
+
+            mermaid
+            graph TD;
+              A[Insert Node] --> B[Check Violations];
+              B --> C[Recolor];
+              B --> D[Rotate];
+              C --> E[Balanced Tree];
+              D --> E;
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Rotations and Balancing
+
+            Rotations help maintain balance:
+
+            - **Left Rotation**
+            - **Right Rotation**
+
+            They restructure the tree without breaking BST rules.
+
+            ####Rotation Effect####
+            ####Preserves order, improves balance####
+
+            mermaid
+            graph TD;
+              A[Unbalanced] --> B[Rotation];
+              B --> C[Balanced];
+              C --> D[Valid RB Tree];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

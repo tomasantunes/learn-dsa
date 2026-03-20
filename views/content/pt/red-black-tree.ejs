@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Árvores Red-Black</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Árvores Red-Black — Introdução
+
+            Uma **Árvore Red-Black** é uma Árvore Binária de Pesquisa auto-balanceada.
+
+            Garante que a árvore se mantém aproximadamente equilibrada, tornando as operações eficientes.
+
+            ### Operações Principais
+            - Pesquisa
+            - Inserção
+            - Remoção
+
+            ####Complexidade Temporal####
+            ####O(log n)####
+
+            mermaid
+            graph TD;
+              A[10] --> B[5];
+              A --> C[15];
+              B --> D[3];
+              B --> E[7];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Propriedades das Árvores Red-Black
+
+            Uma Árvore Red-Black segue estas regras:
+
+            1. Cada nó é **vermelho** ou **preto**
+            2. A raiz é sempre **preta**
+            3. Dois nós vermelhos não podem ser adjacentes
+            4. Todos os caminhos da raiz até às folhas têm o mesmo número de nós pretos
+
+            ####Altura Balanceada####
+            ####h <= 2 * log(n + 1)####
+
+            mermaid
+            graph TD;
+              A[Preto] --> B[Vermelho];
+              A --> C[Vermelho];
+              B --> D[Preto];
+              C --> E[Preto];
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Estrutura do Nó
+
+            Cada nó armazena:
+
+            - Valor (chave)
+            - Cor (Vermelho ou Preto)
+            - Filho esquerdo e direito
+            - Referência ao pai
+
+            ####Representação do Nó####
+            ####Nó = (chave, cor, esquerda, direita, pai)####
+
+            mermaid
+            graph TD;
+              A[Nó] --> B[Chave];
+              A --> C[Cor];
+              A --> D[Esquerda];
+              A --> E[Direita];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Inserção em Árvores Red-Black
+
+            Passos:
+            1. Inserir o nó como numa BST (como vermelho)
+            2. Corrigir violações das propriedades Red-Black
+            3. Utilizar:
+              - Recoloração
+              - Rotações (esquerda/direita)
+
+            ####Objetivo####
+            ####Manter o equilíbrio e as propriedades####
+
+            mermaid
+            graph TD;
+              A[Inserir Nó] --> B[Verificar Violações];
+              B --> C[Recolorir];
+              B --> D[Rodar];
+              C --> E[Árvore Balanceada];
+              D --> E;
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Rotações e Balanceamento
+
+            As rotações ajudam a manter o equilíbrio:
+
+            - **Rotação à esquerda**
+            - **Rotação à direita**
+
+            Reestruturam a árvore sem violar as regras da BST.
+
+            ####Efeito das Rotações####
+            ####Preserva a ordem, melhora o equilíbrio####
+
+            mermaid
+            graph TD;
+              A[Desequilibrada] --> B[Rotação];
+              B --> C[Balanceada];
+              C --> D[Árvore Red-Black Válida];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
