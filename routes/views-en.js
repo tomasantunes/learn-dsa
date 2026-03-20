@@ -85,4 +85,8 @@ router.get('/en/red-black-tree', function(req, res, next) {
   res.render('content/en/red-black-tree');
 });
 
+router.get('/en/pre-order-traversal', function(req, res, next) {
+  res.render('content/en/pre-order-traversal');
+});
+
 module.exports = router;

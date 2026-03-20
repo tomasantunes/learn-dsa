@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Percurso em Pré-Ordem</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Percurso em Pré-Ordem: Introdução
+
+            O percurso em pré-ordem é uma forma de visitar todos os nós de uma árvore.
+
+            Segue uma ordem específica:
+            1. Visitar a raiz
+            2. Percorrer a subárvore esquerda
+            3. Percorrer a subárvore direita
+
+            ####Ordem = Raiz → Esquerda → Direita####
+
+            mermaid
+            graph TD;
+              A[Raiz]-->B[Esquerda];
+              A-->C[Direita];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Processo Passo a Passo
+
+            Em cada nó:
+            - Primeiro, processa-se o nó atual
+            - Depois percorre-se recursivamente o filho esquerdo
+            - Finalmente percorre-se o filho direito
+
+            Esta é uma estratégia de **percurso em profundidade (DFS)**.
+
+            ####PreOrder(T) = visitar(T) + PreOrder(T.esquerda) + PreOrder(T.direita)####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+              C-->F;
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Exemplo de Percurso
+
+            Dada a árvore:
+
+            mermaid
+            graph TD;
+              A[1]-->B[2];
+              A-->C[3];
+              B-->D[4];
+              B-->E[5];
+            /mermaid
+
+            Resultado do percurso em pré-ordem:
+
+            ####1 → 2 → 4 → 5 → 3####
+
+            Passos:
+            - Visitar 1
+            - Ir à esquerda (2 → 4 → 5)
+            - Depois à direita (3)
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Implementação Recursiva
+
+            O percurso em pré-ordem é naturalmente implementado com recursividade.
+
+            Pseudo-código:
+
+            ####
+            PreOrder(no):
+              se no == null:
+                retornar
+              visitar(no)
+              PreOrder(no.esquerda)
+              PreOrder(no.direita)
+            ####
+
+            mermaid
+            graph TD;
+              A[Chamada]-->B[Visitar Nó];
+              B-->C[Subárvore Esquerda];
+              C-->D[Subárvore Direita];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Abordagem Iterativa (Pilha)
+
+            Também é possível implementar o percurso em pré-ordem com uma pilha.
+
+            Passos:
+            1. Colocar a raiz na pilha
+            2. Retirar o nó da pilha e visitá-lo
+            3. Colocar o filho direito
+            4. Colocar o filho esquerdo
+
+            (A pilha garante que a esquerda é processada primeiro)
+
+            ####Tempo = O(n), Espaço = O(n)####
+
+            mermaid
+            graph TD;
+              A[Pilha]-->B[Inserir Raiz];
+              B-->C[Remover + Visitar];
+              C-->D[Inserir Direita];
+              D-->E[Inserir Esquerda];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

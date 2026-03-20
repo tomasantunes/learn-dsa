@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Pre-Order Traversal</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Pre-Order Traversal: Introduction
+
+            Pre-order traversal is a way to visit all nodes in a tree.
+
+            It follows a specific order:
+            1. Visit the root
+            2. Traverse the left subtree
+            3. Traverse the right subtree
+
+            ####Order = Root → Left → Right####
+
+            mermaid
+            graph TD;
+              A[Root]-->B[Left];
+              A-->C[Right];
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Step-by-Step Process
+
+            At each node:
+            - First, process the current node
+            - Then recursively traverse the left child
+            - Finally traverse the right child
+
+            This is a **depth-first traversal** strategy.
+
+            ####PreOrder(T) = visit(T) + PreOrder(T.left) + PreOrder(T.right)####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+              C-->F;
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Example Traversal
+
+            Given the tree:
+
+            mermaid
+            graph TD;
+              A[1]-->B[2];
+              A-->C[3];
+              B-->D[4];
+              B-->E[5];
+            /mermaid
+
+            Pre-order traversal result:
+
+            ####1 → 2 → 4 → 5 → 3####
+
+            Steps:
+            - Visit 1
+            - Go left (2 → 4 → 5)
+            - Then right (3)
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Recursive Implementation
+
+            Pre-order is naturally implemented using recursion.
+
+            Pseudo-code:
+
+            ####
+            PreOrder(node):
+              if node == null:
+                return
+              visit(node)
+              PreOrder(node.left)
+              PreOrder(node.right)
+            ####
+
+            mermaid
+            graph TD;
+              A[Call]-->B[Visit Node];
+              B-->C[Left Subtree];
+              C-->D[Right Subtree];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Iterative Approach (Stack)
+
+            We can also implement pre-order traversal using a stack.
+
+            Steps:
+            1. Push root onto stack
+            2. Pop node and visit it
+            3. Push right child
+            4. Push left child
+
+            (Stack ensures left is processed first)
+
+            ####Time = O(n), Space = O(n)####
+
+            mermaid
+            graph TD;
+              A[Stack]-->B[Push Root];
+              B-->C[Pop + Visit];
+              C-->D[Push Right];
+              D-->E[Push Left];
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
