@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>In-Order Traversal</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # In-Order Traversal (Overview)
+
+            In-order traversal is a way to visit all nodes in a binary tree.
+
+            The order is:
+
+            1. Visit left subtree  
+            2. Visit current node  
+            3. Visit right subtree  
+
+            ####Left → Root → Right####
+
+            mermaid
+            graph TD;
+              Root-->Left;
+              Root-->Right;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Step-by-Step Process
+
+            For each node:
+
+            1. Recursively traverse the left child  
+            2. Process (visit) the current node  
+            3. Recursively traverse the right child  
+
+            This continues until all nodes are visited.
+
+            ####Traversal(node) = L → N → R####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Example Tree
+
+            Consider this binary tree:
+
+            ####InOrder: Left → Root → Right####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+              C-->F;
+              C-->G;
+            /mermaid
+
+            We start from the root (A), but always go left first.
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Traversal Walkthrough
+
+            Steps:
+
+            1. Go left from A → B → D  
+            2. Visit D  
+            3. Back to B, visit B  
+            4. Visit E  
+            5. Back to A, visit A  
+            6. Traverse right subtree (C → F → G)
+
+            ####Result: D → B → E → A → F → C → G####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+              C-->F;
+              C-->G;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Key Properties
+
+            - In-order traversal of a Binary Search Tree (BST) returns sorted values  
+            - Uses recursion or a stack  
+            - Time complexity: O(n)
+
+            ####BST ⇒ Sorted Output####
+
+            mermaid
+            graph TD;
+              4-->2;
+              4-->6;
+              2-->1;
+              2-->3;
+              6-->5;
+              6-->7;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Prev</button> 
+          <button class="btn btn-outline-dark" id="next">Next →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>

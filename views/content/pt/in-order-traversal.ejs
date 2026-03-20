@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Learn DSA</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <%- include('../../partials/head') %>
+  </head>
+  <body>
+
+    <div class="d-flex">
+      <%- include('../../partials/sidebar-pt') %>
+
+      <main class="flex-fill p-4">
+        <div class="text-center">
+          <h3>Percurso In-Order</h3>
+        </div>
+        <div class="slide active">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Percurso In-Order (Visão Geral)
+
+            O percurso in-order é uma forma de visitar todos os nós de uma árvore binária.
+
+            A ordem é:
+
+            1. Visitar a subárvore esquerda  
+            2. Visitar o nó atual  
+            3. Visitar a subárvore direita  
+
+            ####Esquerda → Raiz → Direita####
+
+            mermaid
+            graph TD;
+              Root-->Left;
+              Root-->Right;
+            /mermaid
+            </script>
+          </div>
+        </div>
+
+        <div class="slide">
+          <div class="slide-content markdown">
+            <script type="text/markdown">
+            # Processo Passo a Passo
+
+            Para cada nó:
+
+            1. Percorrer recursivamente o filho esquerdo  
+            2. Processar (visitar) o nó atual  
+            3. Percorrer recursivamente o filho direito  
+
+            Isto continua até todos os nós serem visitados.
+
+            ####Percurso(nó) = E → N → D####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+            /mermaid
+            </script>
+          </div> 
+        </div> 
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Exemplo de Árvore
+
+            Considere a seguinte árvore binária:
+
+            ####InOrder: Esquerda → Raiz → Direita####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+              C-->F;
+              C-->G;
+            /mermaid
+
+            Começamos pela raiz (A), mas seguimos sempre primeiro para a esquerda.
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Execução do Percurso
+
+            Passos:
+
+            1. Ir para a esquerda a partir de A → B → D  
+            2. Visitar D  
+            3. Voltar a B, visitar B  
+            4. Visitar E  
+            5. Voltar a A, visitar A  
+            6. Percorrer a subárvore direita (C → F → G)
+
+            ####Resultado: D → B → E → A → F → C → G####
+
+            mermaid
+            graph TD;
+              A-->B;
+              A-->C;
+              B-->D;
+              B-->E;
+              C-->F;
+              C-->G;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <div class="slide"> 
+          <div class="slide-content markdown"> 
+            <script type="text/markdown">
+            # Propriedades Principais
+
+            - O percurso in-order numa Árvore de Pesquisa Binária (BST) devolve valores ordenados  
+            - Pode ser implementado com recursão ou com uma pilha  
+            - Complexidade temporal: O(n)
+
+            ####BST ⇒ Resultado Ordenado####
+
+            mermaid
+            graph TD;
+              4-->2;
+              4-->6;
+              2-->1;
+              2-->3;
+              6-->5;
+              6-->7;
+            /mermaid
+            </script>
+          </div> 
+        </div>
+
+        <!-- CONTROLS --> 
+        <div class="nav-controls"> 
+          <button class="btn btn-outline-dark me-2" id="prev">← Anterior</button> 
+          <button class="btn btn-outline-dark" id="next">Próximo →</button> 
+        </div> 
+        <div class="progress-container"> 
+          <div class="progress-bar" id="progress"></div> 
+        </div> 
+        <div class="slide-counter"> 
+          <span id="current">1</span>/<span id="total">1</span> 
+        </div>
+      </main>
+    </div>
+  </body>
+  <script src="/javascripts/render-slides.js"></script>
+</html>
